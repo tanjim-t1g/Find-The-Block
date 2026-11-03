@@ -1,6 +1,6 @@
 {
-  "world-factory": "World Factory & Chunk Pacing",
-  "lifecycle": "Match Lifecycle",
-  "reconnect-engine": "Reconnect & Mid-Game Flow",
-  "survival-buffs": "Survival Milestone Buffs"
+  "world-factory": "World Gen & Nether",
+  "lifecycle": "Match Flow",
+  "reconnect-engine": "Crash Reconnect",
+  "survival-buffs": "20-Min Buffs"
 }
