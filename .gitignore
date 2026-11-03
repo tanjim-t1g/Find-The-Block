@@ -32,10 +32,7 @@ crash-reports/
 .DS_Store
 Thumbs.db
 
-# Documentation build caches
-docs/.next/
-docs/node_modules/
-docs/pnpm-lock.yaml
+# Documentation keep files
 docs/architecture/.keep
 docs/configuration/.keep
 docs/reference/.keep
