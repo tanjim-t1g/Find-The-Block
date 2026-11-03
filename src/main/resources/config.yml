@@ -1,0 +1,153 @@
+# =====================================================================
+#             FindTheBlock Configuration
+# =====================================================================
+
+lobby:
+  world-name: "lobby"
+  # Automatic void world & 100x100 bedrock platform generation
+  platform:
+    auto-generate: true
+    size: 100
+    y-level: 100
+    material: "BEDROCK"
+  spawn:
+    x: 0.5
+    y: 101.0
+    z: 0.5
+    yaw: 0.0
+    pitch: 0.0
+  # Lobby Protections
+  protect-blocks: true
+  disable-hunger: true
+  disable-pvp: true
+  disable-fall-damage: true
+  disable-mob-spawning: true
+  disable-item-drops: true
+  disable-weather: true
+  daylight-fixed: true
+  # If a player slips off the platform, teleport them back to spawn at this Y level
+  void-teleport-y: 90.0
+
+# =====================================================================
+#                 Background World Factory Pipeline
+# =====================================================================
+world-factory:
+  # Standby warm world pairs (Overworld + Nether) kept ready in queue
+  buffer-size: 1
+  # Radius in chunks around spawn to pre-generate asynchronously (6 = 13x13 chunks)
+  chunk-radius: 6
+  # Max chunks generated per second to guarantee ZERO server tick drops
+  chunks-per-second: 30
+  # Maximum world border
+  match-border-size: 59999968.0
+
+# =====================================================================
+#                          Match Settings
+# =====================================================================
+match:
+  # Maximum podium winners (1st, 2nd, 3rd) scaling dynamically with player count
+  max-winners: 3
+  # Duration in seconds of victory celebration before returning to lobby
+  celebration-seconds: 10
+  # 20-minute survival reward: Speed II & Regeneration I (Infinite)
+  twenty-minute-buffs: true
+  # Match timeout in hours before automatic cancellation
+  timeout-hours: 3
+
+  starter-kit:
+    iron-tools: true
+    silk-touch-pickaxe: true
+
+  # Mid-game connection handling
+  mid-game:
+    allow-late-entry: true
+    allow-spectate: true
+    reconnect-grace-seconds: 60
+
+  roulette:
+    roll-seconds: 3
+    preview-seconds: 4
+
+  party:
+    leader-inactivity-minutes: 10
+
+# =====================================================================
+#                      Objective Difficulty Tiers
+# =====================================================================
+targets:
+  default-tier: "NORMAL"
+
+  EASY:
+    - "DIAMOND_ORE"
+    - "DEEPSLATE_DIAMOND_ORE"
+    - "EMERALD_ORE"
+    - "DEEPSLATE_EMERALD_ORE"
+    - "AMETHYST_BLOCK"
+    - "CALCITE"
+    - "DRIPSTONE_BLOCK"
+    - "POINTED_DRIPSTONE"
+    - "MOSS_BLOCK"
+    - "GLOW_LICHEN"
+    - "PACKED_ICE"
+    - "MAGMA_BLOCK"
+    - "SLIME_BLOCK"
+    - "NETHER_GOLD_ORE"
+    - "NETHER_QUARTZ_ORE"
+    - "SPONGE"
+    - "DEAD_TUBE_CORAL_BLOCK"
+    - "DEAD_BRAIN_CORAL_BLOCK"
+    - "DEAD_BUBBLE_CORAL_BLOCK"
+    - "DEAD_FIRE_CORAL_BLOCK"
+    - "DEAD_HORN_CORAL_BLOCK"
+
+  NORMAL:
+    - "ANCIENT_DEBRIS"
+    - "CRYING_OBSIDIAN"
+    - "GILDED_BLACKSTONE"
+    - "BLUE_ICE"
+    - "SEA_LANTERN"
+    - "PRISMARINE"
+    - "PRISMARINE_BRICKS"
+    - "DARK_PRISMARINE"
+    - "TUBE_CORAL_BLOCK"
+    - "BRAIN_CORAL_BLOCK"
+    - "BUBBLE_CORAL_BLOCK"
+    - "FIRE_CORAL_BLOCK"
+    - "HORN_CORAL_BLOCK"
+    - "SHROOMLIGHT"
+    - "NETHER_WART_BLOCK"
+    - "WARPED_WART_BLOCK"
+    - "CRIMSON_NYLIUM"
+    - "WARPED_NYLIUM"
+    - "MYCELIUM"
+    - "PODZOL"
+    - "RED_SAND"
+    - "TERRACOTTA"
+    - "RESIN_BLOCK"
+    - "RESIN_BRICKS"
+    - "PURPUR_BLOCK"
+    - "END_STONE_BRICKS"
+    - "CHORUS_FLOWER"
+    - "SCULK_SENSOR"
+    - "CALIBRATED_SCULK_SENSOR"
+    - "SCULK_SHRIEKER"
+    - "SCULK_CATALYST"
+    - "NETHER_BRICKS"
+    - "BLACKSTONE"
+    - "BASALT"
+    - "POLISHED_BASALT"
+
+  HARD:
+    - "DRAGON_HEAD"
+    - "WITHER_SKELETON_SKULL"
+    - "CREEPER_HEAD"
+    - "SKELETON_SKULL"
+    - "ZOMBIE_HEAD"
+    - "PIGLIN_HEAD"
+    - "HEAVY_CORE"
+    - "SHULKER_BOX"
+    - "NETHERITE_BLOCK"
+    - "BEACON"
+    - "ENDER_CHEST"
+    - "RESPAWN_ANCHOR"
+    - "LODESTONE"

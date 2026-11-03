@@ -1,0 +1,28 @@
+# FindTheBlock
+
+A fast item-rush minigame for Paper 1.21+ servers. Players race in a fresh world to find or craft a randomly chosen item.
+
+---
+
+## The Game in 3 Simple Steps
+
+1. **Lobby:** Players gather in the lobby. The party leader or an admin starts with `/start`.
+2. **Roulette:** A 10-second countdown plays, and an item roulette spins on screen to pick a target block.
+3. **The Race:** Players scatter into a fresh survival world with a linked Nether. First person to pick up or craft the target item wins!
+
+---
+
+## Documentation Sections
+
+- **[Quick Start Guide](/getting-started)**: Install the plugin and start your first match in 3 easy steps.
+- **[World Gen & Nether](/architecture/world-factory)**: Background world generation pipeline, chunk pacing, and Nether/End dimensions.
+- **[Match Flow](/architecture/lifecycle)**: The 4 match states, party matchmaking, and 20-second ready checks.
+- **[Crash Reconnect](/architecture/reconnect-engine)**: 60-second crash grace window and late-joiner settings.
+- **[20-Minute Buffs](/architecture/survival-buffs)**: Permanent Speed II and Regeneration I buffs to close out long races.
+- **[Void Lobby](/configuration/void-lobby)**: Default 100x100 bedrock lobby platform and void boundary protection.
+- **[Change Lobby World](/configuration/custom-lobby)**: How to use your own custom spawn world instead of the void platform.
+- **[Difficulty & Recipes](/configuration/difficulty-tiers)**: Easy, Normal, and Hard item tiers plus the in-game `/recipe` viewer.
+- **[Configuration Reference](/configuration/config-reference)**: Full `config.yml` reference with default values.
+- **[Commands & Permissions](/reference/commands)**: Complete command tables for players, parties, and administrators.
+- **[PlaceholderAPI](/reference/placeholderapi)**: Scoreboard, tablist, and hologram placeholder references.
+- **[FAQ & Troubleshooting](/reference/troubleshooting)**: Answers to common questions regarding Nether, End, disconnects, and stats.

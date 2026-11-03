@@ -1,0 +1,47 @@
+# Commands & Permissions
+
+Command reference and permission nodes for FindTheBlock.
+
+---
+
+## Admin Commands
+
+| Command | Description | Permission |
+| :--- | :--- | :--- |
+| `/ftb startall [tier]` | Starts a match for all players currently in the lobby world. | `findtheblock.admin` |
+| `/ftb stop` / `/ftb stopall` | Immediately cancels all active matches and returns players to lobby. | `findtheblock.admin` |
+| `/ftb leaderboard spawn [wins\|time]` | Spawns a floating in-world text leaderboard at your location. | `findtheblock.admin` |
+| `/ftb leaderboard remove` | Removes the nearest floating leaderboard within 10 blocks. | `findtheblock.admin` |
+| `/ftb reload` | Reloads the configuration file and updates floating leaderboards. | `findtheblock.admin` |
+
+---
+
+## Player & Party Commands
+
+All player commands work directly without requiring any prefix:
+
+| Command | Description | Permission |
+| :--- | :--- | :--- |
+| `/party`, `/p` | Opens Party Management if in a party, or Party Finder if solo. | `findtheblock.use` |
+| `/party finder` | Opens the public Party Finder GUI to discover and join parties. | `findtheblock.use` |
+| `/party create [public\|private]` | Creates a new party (public by default). | `findtheblock.use` |
+| `/party invite <player>` | Invites a player to join your party. | `findtheblock.use` |
+| `/party accept` / `/party deny` | Accepts or declines a pending party invitation. | `findtheblock.use` |
+| `/party leave` / `/party disband` | Leaves or disbands your current party. | `findtheblock.use` |
+| `/party public` / `/party private` | Toggles party listing visibility in the Party Finder. | `findtheblock.use` |
+| `/party start [tier]` | Starts the 20-second ready check for your party members. | `findtheblock.use` |
+| `/start [tier]` | Starts a 20-second party match ready check (or admin match if OP). | `findtheblock.use` |
+| `/join` | Joins an ongoing match in progress as a late racer (if enabled). | `findtheblock.use` |
+| `/spectate`, `/spec` | Enters match world as a spectator with compass player teleportation. | `findtheblock.use` |
+| `/leave` | Leaves your active match or party and returns you to the lobby. | `findtheblock.use` |
+| `/recipe` | Opens crafting table recipe / guide GUI for the active target block. | `findtheblock.use` |
+| `/menu`, `/selector` | Opens the Match Selector and Party Hub GUI (or right-click lobby compass). | `findtheblock.use` |
+| `/top` | Opens the interactive leaderboard menu. | `findtheblock.use` |
+
+---
+
+## Permissions Reference
+
+- `findtheblock.admin`: Grants full administrative control (default op).
+- `findtheblock.use`: Grants standard player and party gameplay commands (default all players).
+- `findtheblock.bypass`: Grants bypass of void lobby block protections (default op).

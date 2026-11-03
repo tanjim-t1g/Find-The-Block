@@ -1,0 +1,166 @@
+# ==============================================================================
+#             FindTheBlock - Block Selection Reference List
+# ==============================================================================
+# You can copy and paste any of these block entries directly into your config.yml
+# under EASY, NORMAL, or HARD.
+# All blocks listed below are verified survival-obtainable items in Minecraft 1.21+.
+# ==============================================================================
+
+
+# ==============================================================================
+# 1. NEW 1.21 (TRICKY TRIALS) & 1.21.2-1.21.4 (THE GARDEN AWAKENS) BLOCKS
+# ==============================================================================
+
+### The Crafter & Redstone Components
+    - "CRAFTER"                    # 5 Iron, 1 Crafting Table, 2 Redstone, 1 Dropper (Rec: NORMAL)
+    - "COPPER_BULB"                # 3 Copper Blocks, 1 Redstone, 1 Blaze Rod (Rec: NORMAL)
+    - "EXPOSED_COPPER_BULB"        # Naturally weathered Copper Bulb (Rec: NORMAL)
+    - "WEATHERED_COPPER_BULB"      # Naturally weathered Copper Bulb (Rec: NORMAL)
+    - "OXIDIZED_COPPER_BULB"       # Fully oxidized Copper Bulb (Rec: NORMAL)
+    - "WAXED_COPPER_BULB"          # Copper Bulb + Honeycomb (Rec: HARD)
+
+### Copper Family (1.21)
+    - "COPPER_DOOR"                # 6 Copper Blocks (Rec: EASY)
+    - "COPPER_TRAPDOOR"            # 4 Copper Blocks (Rec: EASY)
+    - "COPPER_GRATE"               # 4 Copper Blocks in stonecutter/crafting (Rec: NORMAL)
+    - "CHISELED_COPPER"            # 2 Cut Copper Slabs in stonecutter (Rec: NORMAL)
+    - "WAXED_COPPER_GRATE"         # Copper Grate + Honeycomb (Rec: HARD)
+    - "WAXED_CHISELED_COPPER"      # Chiseled Copper + Honeycomb (Rec: HARD)
+    - "WAXED_COPPER_DOOR"          # Copper Door + Honeycomb (Rec: HARD)
+    - "WAXED_COPPER_TRAPDOOR"      # Copper Trapdoor + Honeycomb (Rec: HARD)
+
+### Tuff Stone Family (1.21 - Deepslate Layers -1 to -64)
+    - "TUFF_BRICKS"                # 4 Polished Tuff in 2x2 (Rec: EASY)
+    - "TUFF_BRICK_STAIRS"          # 6 Tuff Bricks or Stonecutter (Rec: EASY)
+    - "TUFF_BRICK_SLAB"            # 3 Tuff Bricks or Stonecutter (Rec: EASY)
+    - "TUFF_BRICK_WALL"            # 6 Tuff Bricks or Stonecutter (Rec: EASY)
+    - "CHISELED_TUFF_BRICKS"       # 2 Tuff Brick Slabs in Stonecutter (Rec: EASY)
+    - "POLISHED_TUFF"              # 4 Tuff in 2x2 (Rec: EASY)
+    - "POLISHED_TUFF_STAIRS"       # 6 Polished Tuff or Stonecutter (Rec: EASY)
+    - "POLISHED_TUFF_SLAB"         # 3 Polished Tuff or Stonecutter (Rec: EASY)
+    - "POLISHED_TUFF_WALL"         # 6 Polished Tuff or Stonecutter (Rec: EASY)
+    - "CHISELED_TUFF"              # 2 Polished Tuff Slabs in Stonecutter (Rec: EASY)
+    - "TUFF_STAIRS"                # 6 Raw Tuff or Stonecutter (Rec: EASY)
+    - "TUFF_SLAB"                  # 3 Raw Tuff or Stonecutter (Rec: EASY)
+    - "TUFF_WALL"                  # 6 Raw Tuff or Stonecutter (Rec: EASY)
+
+### Pale Garden & Creaking Blocks (1.21.2 - 1.21.4)
+    - "PALE_OAK_LOG"               # Chopped from Pale Oak trees (Rec: NORMAL)
+    - "STRIPPED_PALE_OAK_LOG"      # Axe stripped Pale Oak Log (Rec: NORMAL)
+    - "PALE_OAK_WOOD"              # 4 Pale Oak Logs in 2x2 (Rec: NORMAL)
+    - "PALE_OAK_PLANKS"            # Crafted from Pale Oak Log (Rec: NORMAL)
+    - "PALE_OAK_STAIRS"            # 6 Pale Oak Planks (Rec: NORMAL)
+    - "PALE_OAK_SLAB"              # 3 Pale Oak Planks (Rec: NORMAL)
+    - "PALE_OAK_DOOR"              # 6 Pale Oak Planks (Rec: NORMAL)
+    - "PALE_OAK_TRAPDOOR"          # 6 Pale Oak Planks (Rec: NORMAL)
+    - "PALE_OAK_FENCE"             # 4 Planks + 2 Sticks (Rec: NORMAL)
+    - "PALE_OAK_FENCE_GATE"        # 2 Planks + 4 Sticks (Rec: NORMAL)
+    - "PALE_MOSS_BLOCK"            # Harvested with hoe/shears in Pale Garden (Rec: NORMAL)
+    - "PALE_MOSS_CARPET"           # 2 Pale Moss Blocks (Rec: NORMAL)
+    - "PALE_HANGING_MOSS"          # Harvested with shears from Pale Oak (Rec: NORMAL)
+    - "CREAKING_HEART"             # Silk touch Pale Oak trunk or 2 Resin Blocks + Pale Oak Log (Rec: HARD)
+    - "RESIN_BLOCK"                # 9 Resin Clumps dropped by Creaking (Rec: HARD)
+    - "RESIN_BRICKS"               # Smelted Resin Clumps or Stonecutter (Rec: HARD)
+    - "CHISELED_RESIN_BRICKS"      # 2 Resin Brick Slabs or Stonecutter (Rec: HARD)
+    - "RESIN_BRICK_STAIRS"         # 6 Resin Bricks or Stonecutter (Rec: HARD)
+    - "RESIN_BRICK_SLAB"           # 3 Resin Bricks or Stonecutter (Rec: HARD)
+    - "RESIN_BRICK_WALL"           # 6 Resin Bricks or Stonecutter (Rec: HARD)
+
+
+# ==============================================================================
+# 2. POPULAR 1.20 (TRAILS & TALES) BLOCKS
+# ==============================================================================
+
+    - "CHISELED_BOOKSHELF"         # 6 Planks, 3 Wooden Slabs (Rec: EASY)
+    - "DECORATED_POT"              # 4 Clay Bricks or 4 Pottery Sherds (Rec: EASY)
+    - "CHERRY_LOG"                 # Cherry Grove biome trees (Rec: NORMAL)
+    - "CHERRY_PLANKS"              # Crafted from Cherry Log (Rec: NORMAL)
+    - "CHERRY_DOOR"                # 6 Cherry Planks (Rec: NORMAL)
+    - "CHERRY_TRAPDOOR"            # 6 Cherry Planks (Rec: NORMAL)
+    - "BAMBOO_BLOCK"               # 9 Bamboo in 3x3 (Rec: NORMAL)
+    - "STRIPPED_BAMBOO_BLOCK"      # Axe stripped Bamboo Block (Rec: NORMAL)
+    - "BAMBOO_PLANKS"              # Crafted from Bamboo Block (Rec: NORMAL)
+    - "BAMBOO_MOSAIC"              # 2 Bamboo Slabs in vertical column (Rec: NORMAL)
+    - "CALIBRATED_SCULK_SENSOR"    # 1 Sculk Sensor + 3 Amethyst Shards (Rec: HARD)
+
+
+# ==============================================================================
+# 3. RECOMMENDED SURVIVAL EASY TIER (Surface, Farming, Basic Workstations)
+# ==============================================================================
+
+    - "CAMPFIRE"                   # 3 Logs, 3 Sticks, 1 Coal
+    - "SOUL_CAMPFIRE"              # 3 Logs, 3 Sticks, 1 Soul Sand/Soil
+    - "HAY_BLOCK"                  # 9 Wheat
+    - "DRIED_KELP_BLOCK"           # 9 Dried Kelp
+    - "BOOKSHELF"                  # 6 Planks, 3 Books
+    - "SMOKER"                     # 1 Furnace, 4 Logs
+    - "BLAST_FURNACE"              # 1 Furnace, 5 Iron Ingots, 3 Smooth Stone
+    - "COMPOSTER"                  # 7 Wooden Slabs
+    - "BARREL"                     # 6 Planks, 2 Slabs
+    - "NOTE_BLOCK"                 # 8 Planks, 1 Redstone Dust
+    - "CARVED_PUMPKIN"             # Shears on Pumpkin
+    - "JACK_O_LANTERN"             # Carved Pumpkin + Torch
+    - "SMOOTH_STONE"               # Smelt Stone in Furnace
+    - "LOOM"                       # 2 Planks, 2 String
+    - "FLETCHING_TABLE"            # 4 Planks, 2 Flint
+    - "CARTOGRAPHY_TABLE"          # 4 Planks, 2 Paper
+    - "GRINDSTONE"                 # 2 Sticks, 1 Stone Slab, 2 Planks
+    - "STONECUTTER"                # 1 Iron Ingot, 3 Stone
+    - "BELL"                       # Found in Village or traded
+    - "PUMPKIN"                    # Found in nature
+    - "MELON"                      # 9 Melon Slices or found naturally
+    - "BONE_BLOCK"                 # 9 Bone Meal
+    - "BEE_NEST"                   # Natural beehive gathered with Silk Touch
+
+
+# ==============================================================================
+# 4. RECOMMENDED SURVIVAL NORMAL TIER (Mining, Redstone, Nether, Mud)
+# ==============================================================================
+
+    - "CHISELED_STONE_BRICKS"      # 2 Stone Brick Slabs in Stonecutter
+    - "DISPENSER"                  # 7 Cobblestone, 1 Bow, 1 Redstone Dust
+    - "DROPPER"                    # 7 Cobblestone, 1 Redstone Dust
+    - "OBSERVER"                   # 6 Cobblestone, 2 Redstone Dust, 1 Nether Quartz
+    - "PISTON"                     # 3 Planks, 4 Cobblestone, 1 Iron, 1 Redstone
+    - "STICKY_PISTON"              # 1 Piston, 1 Slimeball
+    - "TARGET"                     # 1 Hay Block, 4 Redstone Dust
+    - "CAULDRON"                   # 7 Iron Ingots
+    - "LIGHTNING_ROD"              # 3 Copper Ingots
+    - "GLOWSTONE"                  # 4 Glowstone Dust from Nether
+    - "MAGMA_BLOCK"                # 4 Magma Cream or found in Nether
+    - "NETHER_BRICK_FENCE"         # 4 Nether Bricks + 2 Nether Brick Items
+    - "RED_NETHER_BRICKS"          # 2 Nether Bricks + 2 Nether Wart
+    - "CRYING_OBSIDIAN"            # Bartered from Piglins or Ruined Portals
+    - "MUD_BRICKS"                 # 4 Packed Mud
+    - "PACKED_MUD"                 # 1 Mud + 1 Wheat
+    - "BEEHIVE"                    # 6 Planks, 3 Honeycomb
+    - "PRISMARINE"                 # 4 Prismarine Shards
+    - "SEA_LANTERN"                # 4 Prismarine Shards + 5 Prismarine Crystals
+    - "WARPED_STEM"                # Warped Forest in Nether
+    - "CRIMSON_STEM"               # Crimson Forest in Nether
+    - "BASALT"                     # Found in Nether Soul Sand Valley
+    - "BLACKSTONE"                 # Found in Nether
+
+
+# ==============================================================================
+# 5. RECOMMENDED SURVIVAL HARD TIER (Fortresses, Deep Mining, Rare Items)
+# ==============================================================================
+
+    - "BREWING_STAND"              # 1 Blaze Rod, 3 Cobblestone
+    - "ANVIL"                      # 3 Blocks of Iron (27 Iron), 4 Iron Ingots
+    - "ENCHANTING_TABLE"           # 1 Book, 2 Diamonds, 4 Obsidian
+    - "LODESTONE"                  # 1 Netherite Ingot, 8 Chiseled Stone Bricks
+    - "JUKEBOX"                    # 8 Planks, 1 Diamond
+    - "DAYLIGHT_DETECTOR"          # 3 Glass, 3 Nether Quartz, 3 Wood Slabs
+    - "HONEYCOMB_BLOCK"            # 4 Honeycomb from Beehives
+    - "HONEY_BLOCK"                # 4 Honey Bottles
+    - "RESPAWN_ANCHOR"             # 6 Crying Obsidian, 3 Glowstone Blocks
+    - "ENDER_CHEST"                # 8 Obsidian, 1 Eye of Ender
+    - "BEACON"                     # 1 Nether Star, 3 Obsidian, 5 Glass
+    - "CONDUIT"                    # 1 Heart of the Sea, 8 Nautilus Shells
+    - "SCULK_CATALYST"             # Deep Dark biome or Silk Touch
+    - "SCULK_SHRIEKER"             # Deep Dark biome with Silk Touch
+    - "SPONGE"                     # Ocean Monument Elder Guardian or sponge room
+    - "WITHER_SKELETON_SKULL"      # Rare drop from Wither Skeletons (Mob Head block)
+    - "PURPUR_BLOCK"               # Smelted Popped Chorus Fruit
+    - "END_ROD"                    # 1 Popped Chorus Fruit, 1 Blaze Rod

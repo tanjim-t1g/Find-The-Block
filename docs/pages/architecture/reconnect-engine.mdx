@@ -1,0 +1,21 @@
+# Crash Reconnect
+
+How player disconnects and mid-game joiners are handled.
+
+---
+
+## 60-Second Crash Grace Window
+
+- If a player crashes or disconnects during a match, their spot, inventory, and coordinates are held for **60 seconds**.
+- If they reconnect within 60 seconds, they return directly to where they were in the match with their exact items and health.
+- If they do not reconnect within 60 seconds, their saved session expires and they are treated as a **Late Joiner** (spawning in the lobby with options to join or spectate).
+
+---
+
+## Late Joiners
+
+When a player connects while a match is already running, they receive clickable chat options:
+
+- **Join:** Run `/join` to scatter into the active match immediately (if enabled in config).
+- **Spectate:** Run `/spectate` to fly around as a spectator with a player tracker compass.
+- **Stay in Lobby:** Wait on the lobby platform until the next match starts.

@@ -1,0 +1,30 @@
+# Change Lobby World
+
+How to use your own custom spawn or hub build instead of the default void platform.
+
+---
+
+## Configuration
+
+Open `plugins/FindTheBlock/config.yml` and edit the `lobby` section:
+
+```yaml
+lobby:
+  custom-world: "hub"   # Your hub or spawn world folder name
+  spawn-x: 0.5
+  spawn-y: 65.0
+  spawn-z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+```
+
+---
+
+## Steps
+
+1. Make sure your hub world is placed in your server directory and loaded.
+2. Set `custom-world` to the exact name of your world folder.
+3. Configure your desired spawn coordinates (`spawn-x`, `spawn-y`, `spawn-z`, `yaw`, `pitch`).
+4. Run `/ftb reload` or restart the server.
+
+If `custom-world` is left empty (`""`), the plugin automatically falls back to generating the default void bedrock platform (`ftb_lobby`).

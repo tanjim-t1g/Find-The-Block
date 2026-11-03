@@ -1,0 +1,49 @@
+# Target folder
+target/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IDE and Editor files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Server / Test runtime artifacts
+run/
+cache/
+logs/
+*.log
+.attach_pid*
+crash-reports/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Documentation: ignore standalone HTML files and node/next build output, track Next.js docs
+docs/*.html
+docs/**/*.html
+docs/style.css
+docs/search.js
+docs/.next/
+docs/node_modules/
+docs/pnpm-lock.yaml
+docs/architecture/.keep
+docs/configuration/.keep
+docs/reference/.keep
+
+# Exclude README files per user request
+README.md
+docs/README.md

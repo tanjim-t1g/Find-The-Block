@@ -1,0 +1,48 @@
+name: FindTheBlock
+version: 1.0.0
+main: com.findtheblock.FindTheBlock
+api-version: '1.21'
+author: tanjim-t1g
+description: Production Item Rush Minigame with Background World Factory Pipeline
+softdepend: [PlaceholderAPI]
+
+commands:
+  findtheblock:
+    description: Main FindTheBlock minigame command
+    aliases: [ftb]
+    permission: findtheblock.use
+  leave:
+    description: Leave the active match and return to lobby
+    permission: findtheblock.use
+  party:
+    description: FindTheBlock party commands
+    aliases: [p]
+    permission: findtheblock.use
+  join:
+    description: Join an active FindTheBlock match
+    permission: findtheblock.use
+  spectate:
+    description: Spectate an active FindTheBlock match
+    aliases: [spec]
+    permission: findtheblock.use
+  recipe:
+    description: View recipe and acquisition info for the current target block
+    permission: findtheblock.use
+  menu:
+    description: Open the FindTheBlock match selector menu
+    aliases: [selector]
+    permission: findtheblock.use
+  top:
+    description: Open the FindTheBlock leaderboard menu
+    permission: findtheblock.use
+  start:
+    description: Start the match or initiate party ready check
+    permission: findtheblock.use
+
+permissions:
+  findtheblock.use:
+    description: Allows using basic FindTheBlock player commands
+    default: true
+  findtheblock.admin:
+    description: Full administrative control over matches and settings
+    default: op

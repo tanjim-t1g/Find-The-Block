@@ -1,0 +1,36 @@
+# Difficulty & Recipes
+
+Configure item tiers and display in-game crafting recipes.
+
+---
+
+## Difficulty Tiers
+
+| Difficulty | Target Items | Focus & Style |
+| :--- | :--- | :--- |
+| `EASY` (1 pt) | Diamond Ore, Emerald Ore, Amethyst Block, Dripstone, Slime Block, Sponge, Dead Corals | Mining & straightforward exploration |
+| `NORMAL` (3 pts) | Ancient Debris, Crying Obsidian, Sea Lantern, Prismarine, Nylium, Resin Blocks, Sculk Sensors | Biome travel, Silk Touch, Nether exploration |
+| `HARD` (5 pts) | Mob Heads, Heavy Core, Shulker Boxes, Netherite Block, Beacon, Ender Chest, Lodestone | Rare loot, boss encounters, heavy resources |
+
+---
+
+## Starting with a Difficulty
+
+Pass the difficulty tier as an argument, or choose it visually in the in-game Mode Selection GUI:
+
+- `/start easy` (Party leader ready-check)
+- `/start normal`
+- `/start hard`
+- `/ftb startall [tier]` (Admin match for all waiting lobby players)
+
+If omitted, the default tier defined in `config.yml` is automatically selected.
+
+---
+
+## Recipe Viewer GUI
+
+Players can check how to craft the target item at any time:
+
+- Run `/recipe` in chat.
+- A 3 &times; 3 crafting table GUI opens displaying the exact pattern and ingredients.
+- Works for all standard shaped and shapeless vanilla recipes.
