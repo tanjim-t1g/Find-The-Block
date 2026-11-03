@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlaceholderAPI - FindTheBlock Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <header>
+    <div class="header-left">
+      <a href="../index.html" class="brand">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Overview</a></li>
+          <li class="nav-item"><a href="../getting-started.html">Installation &amp; Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Architecture</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../architecture/world-factory.html">World Factory &amp; Nether</a></li>
+          <li class="nav-item"><a href="../architecture/lifecycle.html">Match Lifecycle</a></li>
+          <li class="nav-item"><a href="../architecture/reconnect-engine.html">Reconnect &amp; Mid-Game</a></li>
+          <li class="nav-item"><a href="../architecture/survival-buffs.html">Survival Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Configuration &amp; Setup</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../configuration/void-lobby.html">Void Lobby</a></li>
+          <li class="nav-item"><a href="../configuration/custom-lobby.html">Custom Lobby Setup</a></li>
+          <li class="nav-item"><a href="../configuration/difficulty-tiers.html">Difficulty Tiers</a></li>
+          <li class="nav-item"><a href="../configuration/config-reference.html">Config Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="commands.html">Commands &amp; Permissions</a></li>
+          <li class="nav-item active"><a href="placeholderapi.html">PlaceholderAPI</a></li>
+          <li class="nav-item"><a href="troubleshooting.html">Troubleshooting &amp; FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <a href="../index.html">Docs</a>
+        <span>/</span>
+        <span>Reference</span>
+        <span>/</span>
+        <span>PlaceholderAPI</span>
+      </div>
+
+      <div class="page-header">
+        <h1>PlaceholderAPI &amp; Leaderboards</h1>
+        <p class="lead-desc">Native placeholders for scoreboards, tablists, holograms, and leaderboards.</p>
+      </div>
+
+      <p>FindTheBlock includes a native expansion for <a href="https://www.spigotmc.org/resources/placeholderapi.6245/" target="_blank" rel="noopener noreferrer">PlaceholderAPI</a> under the <code>%findtheblock_*%</code> prefix. No separate expansion download is needed.</p>
+
+      <h2 id="match-placeholders">Match Placeholders</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Placeholder</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>%findtheblock_state%</code></td>
+            <td>String</td>
+            <td>Current match state (<code>LOBBY</code>, <code>COUNTDOWN</code>, <code>ACTIVE</code>, <code>PODIUM</code>, <code>RESETTING</code>).</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_target%</code></td>
+            <td>String</td>
+            <td>Formatted display name of the target block (e.g. <code>Piston</code> or <code>Oak Boat</code>).</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_target_raw%</code></td>
+            <td>String</td>
+            <td>Raw uppercase material enum name (e.g. <code>PISTON</code>).</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_time_remaining%</code></td>
+            <td>String</td>
+            <td>Time left in the match formatted as <code>MM:SS</code>.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_time_elapsed%</code></td>
+            <td>String</td>
+            <td>Time elapsed since match start formatted as <code>MM:SS</code>.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_players_alive%</code></td>
+            <td>Integer</td>
+            <td>Number of active racers currently in the match world.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="player-stats">Personal Stats Placeholders</h2>
+      <p>These placeholders query the viewing player's career statistics stored in <code>stats.yml</code>:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Placeholder</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>%findtheblock_wins%</code></td>
+            <td>Integer</td>
+            <td>Total matches won by the player.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_games_played%</code></td>
+            <td>Integer</td>
+            <td>Total rounds participated in.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_win_rate%</code></td>
+            <td>String</td>
+            <td>Win percentage formatted with one decimal place (e.g. <code>37.5%</code>).</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_fastest_win%</code></td>
+            <td>String</td>
+            <td>Personal fastest win duration formatted as <code>MM:SS</code> (or <code>None</code>).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="leaderboard-placeholders">Leaderboard Placeholders</h2>
+      <p>Leaderboards rank the top 10 players on the server. Replace <code>{rank}</code> with an integer from <code>1</code> to <code>10</code>:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Placeholder</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>%findtheblock_leaderboard_wins_{rank}_name%</code></td>
+            <td>String</td>
+            <td>Username of player holding that rank for total wins.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_leaderboard_wins_{rank}_score%</code></td>
+            <td>Integer</td>
+            <td>Win count of the player at that rank.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_leaderboard_time_{rank}_name%</code></td>
+            <td>String</td>
+            <td>Username holding that rank for fastest completion.</td>
+          </tr>
+          <tr>
+            <td><code>%findtheblock_leaderboard_time_{rank}_score%</code></td>
+            <td>String</td>
+            <td>Fastest completion time formatted as <code>MM:SS</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="page-nav">
+        <a href="commands.html" class="page-nav-link prev">
+          <span class="page-nav-sub">Previous</span>
+          <span class="page-nav-title">&larr; Commands &amp; Permissions</span>
+        </a>
+        <a href="troubleshooting.html" class="page-nav-link next">
+          <span class="page-nav-sub">Next</span>
+          <span class="page-nav-title">Troubleshooting &amp; FAQ &rarr;</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li class="toc-item active"><a href="#match-placeholders">Match Placeholders</a></li>
+        <li class="toc-item"><a href="#player-stats">Personal Stats Placeholders</a></li>
+        <li class="toc-item"><a href="#leaderboard-placeholders">Leaderboard Placeholders</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../search.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Void Lobby Generation - FindTheBlock Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <header>
+    <div class="header-left">
+      <a href="../index.html" class="brand">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Overview</a></li>
+          <li class="nav-item"><a href="../getting-started.html">Installation &amp; Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Architecture</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../architecture/world-factory.html">World Factory &amp; Nether</a></li>
+          <li class="nav-item"><a href="../architecture/lifecycle.html">Match Lifecycle</a></li>
+          <li class="nav-item"><a href="../architecture/reconnect-engine.html">Reconnect &amp; Mid-Game</a></li>
+          <li class="nav-item"><a href="../architecture/survival-buffs.html">Survival Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Configuration &amp; Setup</div>
+        <ul class="nav-list">
+          <li class="nav-item active"><a href="void-lobby.html">Void Lobby</a></li>
+          <li class="nav-item"><a href="custom-lobby.html">Custom Lobby Setup</a></li>
+          <li class="nav-item"><a href="difficulty-tiers.html">Difficulty Tiers</a></li>
+          <li class="nav-item"><a href="config-reference.html">Config Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../reference/commands.html">Commands &amp; Permissions</a></li>
+          <li class="nav-item"><a href="../reference/placeholderapi.html">PlaceholderAPI</a></li>
+          <li class="nav-item"><a href="../reference/troubleshooting.html">Troubleshooting &amp; FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <a href="../index.html">Docs</a>
+        <span>/</span>
+        <span>Configuration</span>
+        <span>/</span>
+        <span>Void Lobby Generation</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Void Lobby Generation</h1>
+        <p class="lead-desc">How FindTheBlock creates an isolated void world and safe bedrock platform out of the box.</p>
+      </div>
+
+      <p>Many servers do not want to install bulky third-party world management plugins just to have an empty lobby dimension. FindTheBlock includes an internal custom void chunk generator (<code>VoidChunkGenerator.java</code>) that builds and maintains a dedicated <code>lobby</code> world automatically.</p>
+
+      <h2 id="bedrock-platform">The 100x100 Bedrock Platform</h2>
+      <p>When the plugin boots for the first time:</p>
+      <ul>
+        <li>It generates an empty void dimension named <code>lobby</code>.</li>
+        <li>At elevation <code>Y: 100</code>, it constructs a smooth 100x100 bedrock square spanning from <code>X: -50</code> to <code>X: 50</code> and <code>Z: -50</code> to <code>Z: 50</code>.</li>
+        <li>The default player spawn point is centered at <code>X: 0.5, Y: 101.0, Z: 0.5</code> facing south.</li>
+      </ul>
+
+      <h2 id="void-safety">The Y=90 Void Safety Boundary</h2>
+      <p>If a player jumps, walks, or gets pushed off the bedrock platform, <code>ProtectionListener.java</code> catches them as soon as their Y-level drops below <code>Y: 90</code>:</p>
+      <ul>
+        <li>Their downward velocity is stopped.</li>
+        <li>They are instantly teleported back to the center spawn point (<code>0.5, 101.0, 0.5</code>).</li>
+        <li>They take zero fall or void damage.</li>
+      </ul>
+
+      <h2 id="lobby-protections">Automatic Protections</h2>
+      <p>Inside the lobby world, the following rules are enforced 24/7 without requiring plugins like WorldGuard:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Default Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Block Breaking / Placing</td>
+            <td>Blocked for all non-operators (bypassable with <code>findtheblock.bypass</code>)</td>
+          </tr>
+          <tr>
+            <td>PVP &amp; Player Damage</td>
+            <td>Completely disabled</td>
+          </tr>
+          <tr>
+            <td>Hunger Depletion</td>
+            <td>Disabled (food level locked at 20)</td>
+          </tr>
+          <tr>
+            <td>Mob Spawning</td>
+            <td>Cancelled for both hostile and passive mobs</td>
+          </tr>
+          <tr>
+            <td>Weather &amp; Time</td>
+            <td>Locked to clear weather and permanent daylight</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="configuration">Configuring the Platform</h2>
+      <div class="pre-header">
+        <span>config.yml</span>
+        <button class="copy-btn" onclick="copyText('lobby:\n  use-custom-world: false\n  world-name: &quot;lobby&quot;\n  platform:\n    material: BEDROCK\n    size: 100\n    y-level: 100\n    void-threshold: 90')">Copy</button>
+      </div>
+      <pre><code>lobby:
+  use-custom-world: false   # Set to true if using an existing server hub
+  world-name: "lobby"       # Dedicated void world folder name
+  platform:
+    material: BEDROCK       # Material used for the platform floor
+    size: 100               # Width and length of platform in blocks
+    y-level: 100            # Y coordinate of the platform surface
+    void-threshold: 90      # Y level that triggers instant teleport back up</code></pre>
+
+      <div class="page-nav">
+        <a href="../architecture/survival-buffs.html" class="page-nav-link prev">
+          <span class="page-nav-sub">Previous</span>
+          <span class="page-nav-title">&larr; Survival Buffs</span>
+        </a>
+        <a href="custom-lobby.html" class="page-nav-link next">
+          <span class="page-nav-sub">Next</span>
+          <span class="page-nav-title">Custom Lobby Setup &rarr;</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li class="toc-item active"><a href="#bedrock-platform">100x100 Bedrock Platform</a></li>
+        <li class="toc-item"><a href="#void-safety">Y=90 Void Safety Boundary</a></li>
+        <li class="toc-item"><a href="#lobby-protections">Automatic Protections</a></li>
+        <li class="toc-item"><a href="#configuration">Configuring the Platform</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../search.js"></script>
+</body>
+</html>

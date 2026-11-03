@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overview - FindTheBlock Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111111;
+      --bg-subtle: #161616;
+      --bg-hover: #1f1f1f;
+      --border: #262626;
+      --border-subtle: #1e1e1e;
+      --text: #ededed;
+      --text-muted: #888888;
+      --text-dim: #555555;
+      --accent: #0070f3;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --sidebar-width: 250px;
+      --header-height: 56px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 15px; }
+    body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    header {
+      position: sticky; top: 0; z-index: 50; height: var(--header-height);
+      background: rgba(17, 17, 17, 0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .brand { font-size: 1.05rem; font-weight: 650; color: var(--text); text-decoration: none; cursor: pointer; }
+    .badge { font-size: 0.7rem; font-family: var(--font-mono); padding: 2px 6px; border-radius: 4px; background: var(--bg-subtle); border: 1px solid var(--border); color: var(--text-muted); }
+    .header-right { display: flex; align-items: center; gap: 12px; }
+
+    .search-btn {
+      display: flex; align-items: center; gap: 8px; background: var(--bg-subtle);
+      border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px;
+      color: var(--text-muted); font-size: 0.82rem; cursor: pointer;
+    }
+    .search-btn:hover { border-color: var(--text-muted); color: var(--text); }
+    .kbd { font-size: 0.7rem; font-family: var(--font-mono); background: #222; border: 1px solid var(--border); padding: 1px 4px; border-radius: 3px; color: #aaa; }
+    .icon-link { color: var(--text-muted); display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; text-decoration: none; }
+    .icon-link:hover { color: var(--text); }
+
+    .layout-container { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: var(--sidebar-width) minmax(0, 1fr); min-height: calc(100vh - var(--header-height)); }
+    aside.sidebar { position: sticky; top: var(--header-height); height: calc(100vh - var(--header-height)); overflow-y: auto; border-right: 1px solid var(--border); padding: 20px 14px; }
+    .nav-group { margin-bottom: 20px; }
+    .nav-group-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); padding: 4px 10px; margin-bottom: 2px; }
+    .nav-list { list-style: none; }
+    .nav-item a { display: block; padding: 5px 10px; border-radius: 6px; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; cursor: pointer; }
+    .nav-item a:hover { background: var(--bg-hover); color: var(--text); }
+    .nav-item.active a { background: var(--bg-hover); color: var(--text); font-weight: 550; }
+
+    main.content { padding: 36px 48px 80px 48px; max-width: 820px; }
+    .breadcrumb { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 14px; }
+    h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 8px; }
+    .lead-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 1.25rem; font-weight: 650; color: var(--text); margin-top: 32px; margin-bottom: 12px; }
+    h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-top: 20px; margin-bottom: 8px; }
+    p { margin-bottom: 14px; color: #cccccc; }
+    ul, ol { margin-bottom: 18px; padding-left: 20px; color: #cccccc; }
+    li { margin-bottom: 4px; }
+
+    code { font-family: var(--font-mono); font-size: 0.85em; background: #1c1c1c; border: 1px solid var(--border); padding: 2px 5px; border-radius: 4px; color: #e0e0e0; }
+    pre { position: relative; background: #000; border: 1px solid var(--border); border-radius: 8px; padding: 14px; overflow-x: auto; margin: 12px 0 20px 0; font-family: var(--font-mono); font-size: 0.82rem; color: #d4d4d4; }
+    pre code { background: transparent; border: none; padding: 0; color: inherit; }
+
+    .pre-header { display: flex; align-items: center; justify-content: space-between; background: #161616; border: 1px solid var(--border); border-bottom: none; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px 12px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); }
+    .pre-header + pre { margin-top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+    .copy-btn { background: transparent; border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; color: var(--text-muted); font-size: 0.68rem; cursor: pointer; }
+    .copy-btn:hover { background: #252525; color: var(--text); }
+
+    table { width: 100%; border-collapse: collapse; margin: 16px 0 24px 0; font-size: 0.85rem; }
+    th { text-align: left; padding: 8px 12px; background: #181818; border: 1px solid var(--border); font-weight: 600; color: var(--text); }
+    td { padding: 8px 12px; border: 1px solid var(--border); color: #cccccc; }
+    tr:nth-child(even) td { background: #141414; }
+
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 24px 0; }
+    .card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
+    .card:hover { border-color: #444; background: var(--bg-hover); }
+    .card-title { font-size: 0.9rem; font-weight: 550; color: var(--text); }
+    .card-arrow { color: var(--text-dim); font-size: 0.85rem; }
+    .card:hover .card-arrow { color: var(--text); }
+
+    .page-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .page-nav-link { flex: 1; display: flex; flex-direction: column; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-subtle); text-decoration: none; cursor: pointer; }
+    .page-nav-link:hover { border-color: #444; background: var(--bg-hover); }
+    .page-nav-link.next { text-align: right; align-items: flex-end; }
+    .page-nav-sub { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 2px; }
+    .page-nav-title { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+
+    .page-view { display: none; }
+    .page-view.active { display: block; }
+
+    .search-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); align-items: flex-start; justify-content: center; padding-top: 15vh; }
+    .search-modal.open { display: flex; }
+    .search-card { background: #161616; border: 1px solid var(--border); border-radius: 8px; width: 100%; max-width: 540px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); overflow: hidden; }
+    .search-input-box { display: flex; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border); gap: 10px; }
+    .search-input-box input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-size: 0.9rem; font-family: var(--font-sans); }
+    .search-results { max-height: 320px; overflow-y: auto; padding: 6px; }
+    .search-result-item { padding: 8px 12px; border-radius: 6px; cursor: pointer; display: block; text-decoration: none; }
+    .search-result-item:hover { background: #222; }
+    .search-result-title { font-size: 0.85rem; font-weight: 550; color: var(--text); }
+    .search-result-snippet { font-size: 0.74rem; color: var(--text-muted); }
+
+    @media (max-width: 768px) {
+      .layout-container { grid-template-columns: 1fr; }
+      aside.sidebar { display: none; }
+      main.content { padding: 24px 18px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="brand" data-page="index">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item active" data-page="index"><a href="index.html" data-page="index">Overview</a></li>
+          <li class="nav-item" data-page="getting-started"><a href="getting-started.html" data-page="getting-started">Quick Start</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Mechanics</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-page="world-factory"><a href="world-factory.html" data-page="world-factory">World Gen &amp; Nether</a></li>
+          <li class="nav-item" data-page="lifecycle"><a href="lifecycle.html" data-page="lifecycle">Match Flow</a></li>
+          <li class="nav-item" data-page="reconnect"><a href="reconnect.html" data-page="reconnect">Crash Reconnect</a></li>
+          <li class="nav-item" data-page="buffs"><a href="buffs.html" data-page="buffs">20-Min Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Setup &amp; Config</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-page="void-lobby"><a href="void-lobby.html" data-page="void-lobby">Void Lobby</a></li>
+          <li class="nav-item" data-page="custom-lobby"><a href="custom-lobby.html" data-page="custom-lobby">Change Lobby World</a></li>
+          <li class="nav-item" data-page="difficulty"><a href="difficulty.html" data-page="difficulty">Difficulty &amp; Recipes</a></li>
+          <li class="nav-item" data-page="config"><a href="config.html" data-page="config">Full Config</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-page="commands"><a href="commands.html" data-page="commands">Commands &amp; Permissions</a></li>
+          <li class="nav-item" data-page="placeholders"><a href="placeholders.html" data-page="placeholders">PlaceholderAPI</a></li>
+          <li class="nav-item" data-page="faq"><a href="faq.html" data-page="faq">FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <!-- PAGE: OVERVIEW -->
+      <div class="page-view active" id="page-index">
+        <div class="breadcrumb">Docs / Getting Started / Overview</div>
+        <h1>FindTheBlock</h1>
+        <p class="lead-desc">A fast item-rush minigame for Paper 1.21+ servers. Players race in a fresh world to find or craft a randomly chosen item.</p>
+
+        <h2>The Game in 3 Simple Steps</h2>
+        <ol>
+          <li><strong>Lobby:</strong> Players gather in the lobby. Party leader or admin starts with <code>/start</code>.</li>
+          <li><strong>Roulette:</strong> A 10-second countdown plays, and an item roulette spins on screen to pick a target block.</li>
+          <li><strong>The Race:</strong> Players scatter into a fresh survival world with a linked Nether. First person to pick up or craft the target item wins!</li>
+        </ol>
+
+        <h2>Explore the Documentation</h2>
+        <div class="card-grid">
+          <a href="getting-started.html" data-page="getting-started" class="card">
+            <span class="card-title">Quick Start</span>
+            <span class="card-arrow">&rarr;</span>
+          </a>
+          <a href="world-factory.html" data-page="world-factory" class="card">
+            <span class="card-title">World Gen &amp; Nether</span>
+            <span class="card-arrow">&rarr;</span>
+          </a>
+          <a href="custom-lobby.html" data-page="custom-lobby" class="card">
+            <span class="card-title">Change Lobby World</span>
+            <span class="card-arrow">&rarr;</span>
+          </a>
+          <a href="commands.html" data-page="commands" class="card">
+            <span class="card-title">Commands &amp; Permissions</span>
+            <span class="card-arrow">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="page-nav">
+          <div></div>
+          <a href="getting-started.html" data-page="getting-started" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Quick Start &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: GETTING STARTED -->
+      <div class="page-view" id="page-getting-started">
+        <div class="breadcrumb">Docs / Getting Started / Quick Start</div>
+        <h1>Quick Start Guide</h1>
+        <p class="lead-desc">Install the plugin and start your first match in 3 easy steps.</p>
+
+        <h2>1. Requirements</h2>
+        <ul>
+          <li><strong>Server:</strong> Paper 1.21.1+ (or Purpur).</li>
+          <li><strong>Java:</strong> Java 21 LTS.</li>
+          <li><strong>Optional:</strong> PlaceholderAPI if using scoreboards.</li>
+        </ul>
+
+        <h2>2. Installation</h2>
+        <ol>
+          <li>Drop <code>FindTheBlock-1.0.0.jar</code> into your server's <code>plugins/</code> folder.</li>
+          <li>Restart your server.</li>
+          <li>Done! The plugin creates its files in <code>plugins/FindTheBlock/</code> automatically.</li>
+        </ol>
+
+        <h2>3. Play a Match</h2>
+        <ol>
+          <li>Join the server. You will spawn on the safe bedrock platform in the void lobby.</li>
+          <li>Give yourself admin rights with <code>/op &lt;your_name&gt;</code>.</li>
+          <li>Start a match:
+            <div class="pre-header">
+              <span>Chat</span>
+              <button class="copy-btn" onclick="copyText('/start normal')">Copy</button>
+            </div>
+            <pre><code>/start normal</code></pre>
+          </li>
+          <li>The 10-second countdown begins, the roulette picks an item, and you are scattered into the world.</li>
+          <li>Forgot how to craft the target item? Type <code>/recipe</code> to see the crafting table recipe.</li>
+          <li>Collect or craft the item to win!</li>
+        </ol>
+
+        <div class="page-nav">
+          <a href="index.html" data-page="index" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Overview</span>
+          </a>
+          <a href="world-factory.html" data-page="world-factory" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">World Gen &amp; Nether &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: WORLD FACTORY -->
+      <div class="page-view" id="page-world-factory">
+        <div class="breadcrumb">Docs / Core Mechanics / World Gen &amp; Nether</div>
+        <h1>World Gen &amp; Nether</h1>
+        <p class="lead-desc">How fresh Overworld and Nether worlds are generated with zero server lag.</p>
+
+        <h2>Background World Factory Pipeline</h2>
+        <p>Traditional minigames freeze the server when creating a new world. FindTheBlock prevents lag using a background generation pipeline:</p>
+        <ul>
+          <li><strong>Standby Queue:</strong> It keeps a pre-generated world pair ready before the match starts.</li>
+          <li><strong>Paced Chunk Gen:</strong> New chunks are generated asynchronously at <strong>30 chunks per second</strong>, keeping server TPS at a locked 20.0.</li>
+          <li><strong>Automatic Cleanup:</strong> When a match concludes, the temporary worlds are unloaded and wiped from disk completely.</li>
+        </ul>
+
+        <h2>Nether &amp; The End Dimensions</h2>
+        <ul>
+          <li><strong>Nether:</strong> An Overworld and Nether world pair is generated with the exact same seed. Nether portals link with 1:8 coordinate scaling.</li>
+          <li><strong>The End:</strong> Supported on-demand. An End dimension (<code>ftb_&lt;id&gt;_the_end</code>) is only loaded if a player enters an End portal. If no one goes to the End, it is never loaded to save server resources.</li>
+          <li><strong>Automatic Cleanup:</strong> When the match finishes, all match dimensions (Overworld, Nether, and End) are automatically unloaded and deleted from disk.</li>
+        </ul>
+
+        <div class="page-nav">
+          <a href="getting-started.html" data-page="getting-started" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Quick Start</span>
+          </a>
+          <a href="lifecycle.html" data-page="lifecycle" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Match Flow &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: MATCH FLOW -->
+      <div class="page-view" id="page-lifecycle">
+        <div class="breadcrumb">Docs / Core Mechanics / Match Flow</div>
+        <h1>Match Flow</h1>
+        <p class="lead-desc">How a match progresses from lobby to victory.</p>
+
+        <h2>The 4 Match States</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Duration</th>
+              <th>What Happens</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>LOBBY</code></td>
+              <td>Unlimited</td>
+              <td>Players wait on the lobby platform. PvP, hunger, and damage are disabled.</td>
+            </tr>
+            <tr>
+              <td><code>STARTING</code></td>
+              <td>10 seconds</td>
+              <td>Countdown plays on screen with sounds. Item roulette spins to pick the target block.</td>
+            </tr>
+            <tr>
+              <td><code>IN_GAME</code></td>
+              <td>Until win</td>
+              <td>Players scatter into fresh survival Overworld and Nether worlds. First pickup wins.</td>
+            </tr>
+            <tr>
+              <td><code>ENDING</code></td>
+              <td>10 seconds</td>
+              <td>Winner celebration with fireworks. Players teleport back to lobby; match worlds delete.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Player Death &amp; Respawn</h2>
+        <ul>
+          <li>Players keep inventory on death inside match worlds.</li>
+          <li>Respawn sends players back to their bed or match world spawn point.</li>
+        </ul>
+
+        <h2>Party Matchmaking &amp; 20s Ready Check</h2>
+        <ul>
+          <li><strong>Party Match Initiation:</strong> When a party leader starts a match with <code>/start</code> or via the Match Selector, an interactive ready-check menu opens for all party members.</li>
+          <li><strong>20-Second Window:</strong> Players click <code>[ Accept &amp; Join ]</code> or <code>[ Decline ]</code>. If a player does not respond within 20 seconds, they are considered declined.</li>
+          <li><strong>Automatic Start:</strong> Once all players respond (or 20s expires), racers who confirmed enter the 10-second countdown and roulette, while declining players stay safely in the lobby.</li>
+        </ul>
+
+        <h2>Stopping a Match</h2>
+        <ul>
+          <li>Admins can stop an active match anytime with <code>/ftb stop</code>.</li>
+          <li>All players return to the lobby immediately with cleared inventories, and temporary worlds are deleted.</li>
+        </ul>
+
+        <div class="page-nav">
+          <a href="world-factory.html" data-page="world-factory" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; World Gen &amp; Nether</span>
+          </a>
+          <a href="reconnect.html" data-page="reconnect" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Crash Reconnect &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: CRASH RECONNECT -->
+      <div class="page-view" id="page-reconnect">
+        <div class="breadcrumb">Docs / Core Mechanics / Crash Reconnect</div>
+        <h1>Crash Reconnect</h1>
+        <p class="lead-desc">How player disconnects and mid-game joiners are handled.</p>
+
+        <h2>60-Second Crash Grace Window</h2>
+        <ul>
+          <li>If a player crashes or disconnects during a match, their spot, inventory, and coordinates are held for <strong>60 seconds</strong>.</li>
+          <li>If they reconnect within 60 seconds, they return directly to where they were in the match.</li>
+          <li>If they do not reconnect within 60 seconds, their saved session expires and they are treated as a <strong>Late Joiner</strong> (spawning in the lobby with options to join or spectate).</li>
+        </ul>
+
+        <h2>Late Joiners</h2>
+        <p>When a player connects while a match is already running, they receive clickable chat options:</p>
+        <ul>
+          <li><strong>Join:</strong> Run <code>/join</code> to scatter into the match immediately (if enabled in config).</li>
+          <li><strong>Spectate:</strong> Run <code>/spectate</code> to fly around as a spectator.</li>
+          <li><strong>Stay in Lobby:</strong> Wait on the lobby platform until the next match starts.</li>
+        </ul>
+
+        <div class="page-nav">
+          <a href="lifecycle.html" data-page="lifecycle" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Match Flow</span>
+          </a>
+          <a href="buffs.html" data-page="buffs" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">20-Min Buffs &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: BUFFS -->
+      <div class="page-view" id="page-buffs">
+        <div class="breadcrumb">Docs / Core Mechanics / 20-Min Buffs</div>
+        <h1>20-Minute Milestone Buffs</h1>
+        <p class="lead-desc">Permanent speed and regeneration buffs to help close out long matches.</p>
+
+        <h2>The Buffs</h2>
+        <p>When a match reaches the 20-minute mark, all remaining players receive permanent potion buffs to speed up pacing until the match ends:</p>
+        <ul>
+          <li><strong>Speed II:</strong> Increased movement and sprinting speed.</li>
+          <li><strong>Regeneration I:</strong> Steady passive health recovery.</li>
+        </ul>
+        <p>Both buffs stay active until the match ends.</p>
+
+        <div class="page-nav">
+          <a href="reconnect.html" data-page="reconnect" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Crash Reconnect</span>
+          </a>
+          <a href="void-lobby.html" data-page="void-lobby" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Void Lobby &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: VOID LOBBY -->
+      <div class="page-view" id="page-void-lobby">
+        <div class="breadcrumb">Docs / Setup &amp; Config / Void Lobby</div>
+        <h1>Void Lobby</h1>
+        <p class="lead-desc">The default pre-game waiting area included with FindTheBlock.</p>
+
+        <h2>Platform Specs</h2>
+        <ul>
+          <li><strong>World name:</strong> <code>ftb_lobby</code> (created automatically if missing).</li>
+          <li><strong>Size:</strong> 100 &times; 100 bedrock platform centered around (0, 0).</li>
+          <li><strong>Elevation:</strong> Y = 100.</li>
+          <li><strong>Spawn point:</strong> X = 0.5, Y = 101.0, Z = 0.5.</li>
+        </ul>
+
+        <h2>Void Boundary Protection</h2>
+        <ul>
+          <li>If a player falls or jumps off the platform, they are caught at <strong>Y = 90</strong>.</li>
+          <li>The player is instantly teleported back to the center spawn.</li>
+          <li>No fall damage is dealt, and no death screen is triggered.</li>
+        </ul>
+
+        <h2>Lobby Features &amp; Controls</h2>
+        <ul>
+          <li><strong>Match Selector Compass:</strong> Given automatically in Slot 4. Right-click to browse active matches, join/spectate mid-game, or access the Party Finder.</li>
+          <li><strong>In-World Leaderboard:</strong> Admins can spawn floating text leaderboards with <code>/ftb leaderboard spawn [wins|time]</code> anywhere on the platform.</li>
+          <li><strong>Clean Inventories:</strong> Returning to the lobby clears survival gear so players never carry tools or ores into the lobby.</li>
+        </ul>
+
+        <h2>Lobby Rules</h2>
+        <ul>
+          <li>PvP is disabled.</li>
+          <li>Hunger does not drain.</li>
+          <li>Weather is locked to clear daylight.</li>
+          <li>Blocks cannot be broken or placed.</li>
+        </ul>
+
+        <div class="page-nav">
+          <a href="buffs.html" data-page="buffs" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; 20-Min Buffs</span>
+          </a>
+          <a href="custom-lobby.html" data-page="custom-lobby" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Change Lobby World &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: CUSTOM LOBBY -->
+      <div class="page-view" id="page-custom-lobby">
+        <div class="breadcrumb">Docs / Setup &amp; Config / Change Lobby World</div>
+        <h1>Change Lobby World</h1>
+        <p class="lead-desc">How to use your own custom spawn or hub build instead of the void platform.</p>
+
+        <h2>Configuration</h2>
+        <p>Open <code>plugins/FindTheBlock/config.yml</code> and edit the <code>lobby</code> section:</p>
+
+        <div class="pre-header">
+          <span>config.yml</span>
+          <button class="copy-btn" onclick="copyText('lobby:\n  custom-world: &quot;hub&quot;\n  spawn-x: 0.5\n  spawn-y: 65.0\n  spawn-z: 0.5\n  yaw: 0.0\n  pitch: 0.0')">Copy</button>
+        </div>
+        <pre><code>lobby:
+  custom-world: "hub"   # Your hub or spawn world folder name
+  spawn-x: 0.5
+  spawn-y: 65.0
+  spawn-z: 0.5
+  yaw: 0.0
+  pitch: 0.0</code></pre>
+
+        <h2>Steps</h2>
+        <ol>
+          <li>Make sure your hub world is placed in your server directory and loaded.</li>
+          <li>Set <code>custom-world</code> to the exact name of your world.</li>
+          <li>Set the spawn coordinates.</li>
+          <li>Run <code>/ftb reload</code> or restart the server.</li>
+        </ol>
+
+        <p>If <code>custom-world</code> is left empty (<code>""</code>), the plugin uses the default void platform (<code>ftb_lobby</code>).</p>
+
+        <div class="page-nav">
+          <a href="void-lobby.html" data-page="void-lobby" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Void Lobby</span>
+          </a>
+          <a href="difficulty.html" data-page="difficulty" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Difficulty &amp; Recipes &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: DIFFICULTY -->
+      <div class="page-view" id="page-difficulty">
+        <div class="breadcrumb">Docs / Setup &amp; Config / Difficulty &amp; Recipes</div>
+        <h1>Difficulty &amp; Recipes</h1>
+        <p class="lead-desc">Configure item tiers and display in-game crafting recipes.</p>
+
+        <h2>Difficulty Tiers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Difficulty</th>
+              <th>Target Items</th>
+              <th>Focus &amp; Style</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>EASY</code> (1 pt)</td>
+              <td>Diamond Ore, Emerald Ore, Amethyst Block, Dripstone, Slime Block, Sponge, Dead Corals</td>
+              <td>Mining &amp; straightforward exploration</td>
+            </tr>
+            <tr>
+              <td><code>NORMAL</code> (3 pts)</td>
+              <td>Ancient Debris, Crying Obsidian, Sea Lantern, Prismarine, Nylium, Resin Blocks, Sculk Sensors</td>
+              <td>Biome travel, Silk Touch, Nether exploration</td>
+            </tr>
+            <tr>
+              <td><code>HARD</code> (5 pts)</td>
+              <td>Mob Heads, Heavy Core, Shulker Boxes, Netherite Block, Beacon, Ender Chest, Lodestone</td>
+              <td>Rare loot, boss encounters, heavy resources</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Starting with a Difficulty</h2>
+        <p>Pass the difficulty as an argument, or choose it visually in the in-game Mode Selection GUI:</p>
+        <ul>
+          <li><code>/start easy</code> (Party leader ready-check)</li>
+          <li><code>/start normal</code></li>
+          <li><code>/start hard</code></li>
+          <li><code>/ftb startall [tier]</code> (Admin match for all lobby players)</li>
+        </ul>
+        <p>If omitted, the default tier defined in <code>config.yml</code> is used.</p>
+
+        <h2>Recipe Viewer GUI</h2>
+        <p>Players can check how to craft the target item at any time:</p>
+        <ul>
+          <li>Run <code>/recipe</code> in chat.</li>
+          <li>A 3 &times; 3 crafting table GUI opens displaying the exact pattern and ingredients.</li>
+          <li>Works for all standard shaped and shapeless vanilla recipes.</li>
+        </ul>
+
+        <div class="page-nav">
+          <a href="custom-lobby.html" data-page="custom-lobby" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Change Lobby World</span>
+          </a>
+          <a href="config.html" data-page="config" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Full Config &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: CONFIG -->
+      <div class="page-view" id="page-config">
+        <div class="breadcrumb">Docs / Setup &amp; Config / Full Config</div>
+        <h1>Configuration Reference</h1>
+        <p class="lead-desc">Complete default configuration file located at <code>plugins/FindTheBlock/config.yml</code>.</p>
+
+        <h2>Default config.yml</h2>
+        <div class="pre-header">
+          <span>plugins/FindTheBlock/config.yml</span>
+          <button class="copy-btn" onclick="copyText(document.getElementById('fullConfig').innerText)">Copy</button>
+        </div>
+        <pre><code id="fullConfig"># =====================================================================
+#             FindTheBlock Configuration
+# =====================================================================
+
+lobby:
+  world-name: "lobby"
+  platform:
+    auto-generate: true
+    size: 100
+    y-level: 100
+    material: "BEDROCK"
+  spawn:
+    x: 0.5
+    y: 101.0
+    z: 0.5
+    yaw: 0.0
+    pitch: 0.0
+  protect-blocks: true
+  disable-hunger: true
+  disable-pvp: true
+  disable-fall-damage: true
+  disable-mob-spawning: true
+  disable-item-drops: true
+  disable-weather: true
+  daylight-fixed: true
+  void-teleport-y: 90.0
+
+world-factory:
+  buffer-size: 1
+  chunk-radius: 6
+  chunks-per-second: 30
+  match-border-size: 59999968.0
+
+match:
+  max-winners: 3
+  celebration-seconds: 10
+  twenty-minute-buffs: true
+  timeout-hours: 3
+
+  starter-kit:
+    iron-tools: true
+    silk-touch-pickaxe: true
+
+  mid-game:
+    allow-late-entry: true
+    allow-spectate: true
+    reconnect-grace-seconds: 60
+
+  roulette:
+    roll-seconds: 3
+    preview-seconds: 4
+
+  party:
+    leader-inactivity-minutes: 10
+
+targets:
+  default-tier: "NORMAL"
+
+  EASY:
+    - "DIAMOND_ORE"
+    - "DEEPSLATE_DIAMOND_ORE"
+    - "EMERALD_ORE"
+    - "DEEPSLATE_EMERALD_ORE"
+    - "AMETHYST_BLOCK"
+    - "CALCITE"
+    - "DRIPSTONE_BLOCK"
+    - "POINTED_DRIPSTONE"
+    - "MOSS_BLOCK"
+    - "GLOW_LICHEN"
+    - "PACKED_ICE"
+    - "MAGMA_BLOCK"
+    - "SLIME_BLOCK"
+    - "NETHER_GOLD_ORE"
+    - "NETHER_QUARTZ_ORE"
+    - "SPONGE"
+    - "DEAD_TUBE_CORAL_BLOCK"
+    - "DEAD_BRAIN_CORAL_BLOCK"
+    - "DEAD_BUBBLE_CORAL_BLOCK"
+    - "DEAD_FIRE_CORAL_BLOCK"
+    - "DEAD_HORN_CORAL_BLOCK"
+
+  NORMAL:
+    - "ANCIENT_DEBRIS"
+    - "CRYING_OBSIDIAN"
+    - "GILDED_BLACKSTONE"
+    - "BLUE_ICE"
+    - "SEA_LANTERN"
+    - "PRISMARINE"
+    - "PRISMARINE_BRICKS"
+    - "DARK_PRISMARINE"
+    - "TUBE_CORAL_BLOCK"
+    - "BRAIN_CORAL_BLOCK"
+    - "BUBBLE_CORAL_BLOCK"
+    - "FIRE_CORAL_BLOCK"
+    - "HORN_CORAL_BLOCK"
+    - "SHROOMLIGHT"
+    - "NETHER_WART_BLOCK"
+    - "WARPED_WART_BLOCK"
+    - "CRIMSON_NYLIUM"
+    - "WARPED_NYLIUM"
+    - "MYCELIUM"
+    - "PODZOL"
+    - "RED_SAND"
+    - "TERRACOTTA"
+    - "RESIN_BLOCK"
+    - "RESIN_BRICKS"
+    - "PURPUR_BLOCK"
+    - "END_STONE_BRICKS"
+    - "CHORUS_FLOWER"
+    - "SCULK_SENSOR"
+    - "CALIBRATED_SCULK_SENSOR"
+    - "SCULK_SHRIEKER"
+    - "SCULK_CATALYST"
+    - "NETHER_BRICKS"
+    - "BLACKSTONE"
+    - "BASALT"
+    - "POLISHED_BASALT"
+
+  HARD:
+    - "DRAGON_HEAD"
+    - "WITHER_SKELETON_SKULL"
+    - "CREEPER_HEAD"
+    - "SKELETON_SKULL"
+    - "ZOMBIE_HEAD"
+    - "PIGLIN_HEAD"
+    - "HEAVY_CORE"
+    - "SHULKER_BOX"
+    - "NETHERITE_BLOCK"
+    - "BEACON"
+    - "ENDER_CHEST"
+    - "RESPAWN_ANCHOR"
+    - "LODESTONE"</code></pre>
+
+        <div class="page-nav">
+          <a href="difficulty.html" data-page="difficulty" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Difficulty &amp; Recipes</span>
+          </a>
+          <a href="commands.html" data-page="commands" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">Commands &amp; Permissions &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: COMMANDS -->
+      <div class="page-view" id="page-commands">
+        <div class="breadcrumb">Docs / Reference / Commands &amp; Permissions</div>
+        <h1>Commands &amp; Permissions</h1>
+        <p class="lead-desc">Command reference and permission nodes for FindTheBlock.</p>
+
+        <h2>Admin Commands</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Description</th>
+              <th>Permission</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/ftb startall [tier]</code></td>
+              <td>Starts a match for all players currently in the lobby world.</td>
+              <td><code>findtheblock.admin</code></td>
+            </tr>
+            <tr>
+              <td><code>/ftb stop</code> / <code>/ftb stopall</code></td>
+              <td>Immediately cancels all active matches and returns players to lobby.</td>
+              <td><code>findtheblock.admin</code></td>
+            </tr>
+            <tr>
+              <td><code>/ftb leaderboard spawn [wins|time]</code></td>
+              <td>Spawns a floating in-world text leaderboard at your location.</td>
+              <td><code>findtheblock.admin</code></td>
+            </tr>
+            <tr>
+              <td><code>/ftb leaderboard remove</code></td>
+              <td>Removes the nearest floating leaderboard within 10 blocks.</td>
+              <td><code>findtheblock.admin</code></td>
+            </tr>
+            <tr>
+              <td><code>/ftb reload</code></td>
+              <td>Reloads the configuration file and updates floating leaderboards.</td>
+              <td><code>findtheblock.admin</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Player &amp; Party Commands</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Description</th>
+              <th>Permission</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/party</code>, <code>/p</code></td>
+              <td>Opens Party Management if in a party, or Party Finder if solo.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party finder</code></td>
+              <td>Opens the public Party Finder GUI to discover and join parties.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party create [public|private]</code></td>
+              <td>Creates a new party (public by default).</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party invite &lt;player&gt;</code></td>
+              <td>Invites a player to join your party.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party accept</code> / <code>/party deny</code></td>
+              <td>Accepts or declines a pending party invitation.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party leave</code> / <code>/party disband</code></td>
+              <td>Leaves or disbands your current party.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party public</code> / <code>/party private</code></td>
+              <td>Toggles party listing visibility in the Party Finder.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/party start [tier]</code></td>
+              <td>Starts the 20-second ready check for your party members.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/start [tier]</code></td>
+              <td>Starts a 20-second party match ready check (or admin match if OP).</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/join</code></td>
+              <td>Joins an ongoing match in progress as a late racer (if enabled).</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/spectate</code>, <code>/spec</code></td>
+              <td>Enters match world as a spectator with compass player teleportation.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/leave</code></td>
+              <td>Leaves your active match or party and returns you to the lobby.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/recipe</code></td>
+              <td>Opens crafting table recipe / guide GUI for the active target block.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/menu</code>, <code>/selector</code></td>
+              <td>Opens the Match Selector and Party Hub GUI (or right-click lobby compass).</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+            <tr>
+              <td><code>/top</code></td>
+              <td>Opens the interactive leaderboard menu.</td>
+              <td><code>findtheblock.use</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Permissions Reference</h2>
+        <ul>
+          <li><code>findtheblock.admin</code>: Grants full administrative control (default op).</li>
+          <li><code>findtheblock.play</code>: Grants standard player gameplay commands (default all players).</li>
+          <li><code>findtheblock.bypass</code>: Grants bypass of void lobby block protections (default op).</li>
+        </ul>
+
+        <div class="page-nav">
+          <a href="config.html" data-page="config" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Full Config</span>
+          </a>
+          <a href="placeholders.html" data-page="placeholders" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">PlaceholderAPI &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: PLACEHOLDERS -->
+      <div class="page-view" id="page-placeholders">
+        <div class="breadcrumb">Docs / Reference / PlaceholderAPI</div>
+        <h1>PlaceholderAPI Reference</h1>
+        <p class="lead-desc">Supported placeholders for tablists, scoreboards, and holograms.</p>
+
+        <h2>Global Match Placeholders</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Placeholder</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>%findtheblock_state%</code></td>
+              <td>Current match state enum.</td>
+              <td><code>IN_GAME</code>, <code>LOBBY</code></td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_state_display%</code></td>
+              <td>Formatted state with color code.</td>
+              <td><code>In Game</code>, <code>Lobby</code></td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_target%</code></td>
+              <td>Name of the target block or item.</td>
+              <td><code>IRON_INGOT</code></td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_time%</code></td>
+              <td>Elapsed match time in MM:SS format.</td>
+              <td><code>04:23</code></td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_contestants%</code></td>
+              <td>Count of alive participants in the match.</td>
+              <td><code>8</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Personal Player Stats</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Placeholder</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>%findtheblock_wins%</code></td>
+              <td>Total number of 1st-place victories.</td>
+              <td><code>14</code></td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_played%</code></td>
+              <td>Total matches entered.</td>
+              <td><code>32</code></td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_best_time%</code></td>
+              <td>Fastest win time achieved.</td>
+              <td><code>01:45</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Top Leaderboards (Rank 1 to 10)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Placeholder</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>%findtheblock_top_1_name%</code></td>
+              <td>Username of rank #1 player.</td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_top_1_wins%</code></td>
+              <td>Win count of rank #1 player.</td>
+            </tr>
+            <tr>
+              <td><code>%findtheblock_top_1_time%</code></td>
+              <td>Fastest win time of rank #1 player.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="page-nav">
+          <a href="commands.html" data-page="commands" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; Commands &amp; Permissions</span>
+          </a>
+          <a href="faq.html" data-page="faq" class="page-nav-link next">
+            <span class="page-nav-sub">Next</span>
+            <span class="page-nav-title">FAQ &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- PAGE: FAQ -->
+      <div class="page-view" id="page-faq">
+        <div class="breadcrumb">Docs / Reference / FAQ</div>
+        <h1>Frequently Asked Questions</h1>
+        <p class="lead-desc">Quick answers to common questions about FindTheBlock.</p>
+
+        <h2>Can players enter the Nether?</h2>
+        <p>Yes. The Overworld and Nether are paired with the identical seed. Players can build and light nether portals to gather Nether items like Blaze Rods and Nether Bricks.</p>
+
+        <h2>Can players enter the End?</h2>
+        <p>Yes. The End dimension is loaded on-demand per match only if a player enters an End portal. If no one enters the End, it is not loaded. When the match ends, all dimensions (Overworld, Nether, and End) are deleted.</p>
+
+        <h2>What happens if a player disconnects?</h2>
+        <p>Players have a 60-second window to reconnect and resume where they left off. If they do not reconnect within 60 seconds, their spot is forfeited and they are treated as a late joiner.</p>
+
+        <h2>Can players join an active match?</h2>
+        <p>Yes. When a player logs in during an active round, they can use <code>/join</code> to join as a runner or <code>/spectate</code> to watch in spectator mode.</p>
+
+        <h2>How do I reset all leaderboard stats?</h2>
+        <p>Stop your server, delete <code>plugins/FindTheBlock/stats.json</code>, and start the server again.</p>
+
+        <h2>Why are placeholders displaying raw text?</h2>
+        <p>Make sure you have PlaceholderAPI installed on your Paper server and run <code>/papi reload</code>.</p>
+
+        <div class="page-nav">
+          <a href="placeholders.html" data-page="placeholders" class="page-nav-link prev">
+            <span class="page-nav-sub">Previous</span>
+            <span class="page-nav-title">&larr; PlaceholderAPI</span>
+          </a>
+          <a href="index.html" data-page="index" class="page-nav-link next">
+            <span class="page-nav-sub">Home</span>
+            <span class="page-nav-title">Back to Overview &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script>
+    function copyText(t) {
+      navigator.clipboard.writeText(t).then(() => {
+        document.querySelectorAll('.copy-btn').forEach(b => {
+          if (b.innerText === 'Copy') { b.innerText = 'Copied'; setTimeout(() => b.innerText = 'Copy', 1500); }
+        });
+      });
+    }
+
+    const pageTitles = {
+      'index': 'Overview - FindTheBlock Docs',
+      'getting-started': 'Quick Start - FindTheBlock Docs',
+      'world-factory': 'World Gen & Nether - FindTheBlock Docs',
+      'lifecycle': 'Match Flow - FindTheBlock Docs',
+      'reconnect': 'Crash Reconnect - FindTheBlock Docs',
+      'buffs': '20-Min Buffs - FindTheBlock Docs',
+      'void-lobby': 'Void Lobby - FindTheBlock Docs',
+      'custom-lobby': 'Change Lobby World - FindTheBlock Docs',
+      'difficulty': 'Difficulty & Recipes - FindTheBlock Docs',
+      'config': 'Full Config - FindTheBlock Docs',
+      'commands': 'Commands & Permissions - FindTheBlock Docs',
+      'placeholders': 'PlaceholderAPI - FindTheBlock Docs',
+      'faq': 'FAQ - FindTheBlock Docs'
+    };
+
+    function showPage(pageId) {
+      if (!pageId || pageId === '') pageId = 'index';
+      const target = document.getElementById('page-' + pageId);
+      if (!target) return;
+
+      document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+      target.classList.add('active');
+
+      document.querySelectorAll('.nav-item').forEach(el => {
+        if (el.getAttribute('data-page') === pageId) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+
+      if (pageTitles[pageId]) {
+        document.title = pageTitles[pageId];
+      }
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Intercept clicks on any page link
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      const targetPage = link.getAttribute('data-page');
+      const href = link.getAttribute('href');
+
+      if (link.target === '_blank' || (href && (href.startsWith('http://') || href.startsWith('https://')))) {
+        return;
+      }
+
+      let pageId = targetPage;
+      if (!pageId && href) {
+        if (href.endsWith('.html')) pageId = href.replace('.html', '');
+        else if (href.startsWith('#')) pageId = href.replace('#', '');
+      }
+
+      if (pageId && document.getElementById('page-' + pageId)) {
+        e.preventDefault();
+        history.pushState({ pageId }, '', '#' + pageId);
+        showPage(pageId);
+      }
+    });
+
+    window.addEventListener('popstate', (e) => {
+      const pageId = (e.state && e.state.pageId) || location.hash.replace('#', '') || 'index';
+      showPage(pageId);
+    });
+
+    // Search system
+    const searchIndex = [
+      { title: 'Overview', page: 'index', section: 'Getting Started' },
+      { title: 'Quick Start', page: 'getting-started', section: 'Getting Started' },
+      { title: 'World Gen & Nether', page: 'world-factory', section: 'Core Mechanics' },
+      { title: 'Match Flow', page: 'lifecycle', section: 'Core Mechanics' },
+      { title: 'Crash Reconnect', page: 'reconnect', section: 'Core Mechanics' },
+      { title: '20-Min Buffs', page: 'buffs', section: 'Core Mechanics' },
+      { title: 'Void Lobby', page: 'void-lobby', section: 'Setup & Config' },
+      { title: 'Change Lobby World', page: 'custom-lobby', section: 'Setup & Config' },
+      { title: 'Difficulty & Recipes', page: 'difficulty', section: 'Setup & Config' },
+      { title: 'Full Config', page: 'config', section: 'Setup & Config' },
+      { title: 'Commands & Permissions', page: 'commands', section: 'Reference' },
+      { title: 'PlaceholderAPI', page: 'placeholders', section: 'Reference' },
+      { title: 'FAQ', page: 'faq', section: 'Reference' }
+    ];
+
+    const searchModal = document.getElementById('searchModal');
+    const openSearchBtn = document.getElementById('openSearch');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    function renderResults(query) {
+      searchResults.innerHTML = '';
+      const q = query.toLowerCase().trim();
+      const filtered = q ? searchIndex.filter(i => i.title.toLowerCase().includes(q) || i.section.toLowerCase().includes(q)) : searchIndex;
+      filtered.forEach(item => {
+        const a = document.createElement('a');
+        a.className = 'search-result-item';
+        a.href = '#' + item.page;
+        a.setAttribute('data-page', item.page);
+        a.innerHTML = `<div class="search-result-title">${item.title}</div><div class="search-result-snippet">${item.section}</div>`;
+        a.onclick = (e) => {
+          e.preventDefault();
+          searchModal.classList.remove('open');
+          history.pushState({ pageId: item.page }, '', '#' + item.page);
+          showPage(item.page);
+        };
+        searchResults.appendChild(a);
+      });
+    }
+
+    openSearchBtn.onclick = () => { searchModal.classList.add('open'); searchInput.value = ''; renderResults(''); searchInput.focus(); };
+    searchModal.onclick = (e) => { if (e.target === searchModal) searchModal.classList.remove('open'); };
+    window.onkeydown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); searchModal.classList.toggle('open'); searchInput.focus(); renderResults(''); }
+      if (e.key === 'Escape') searchModal.classList.remove('open');
+    };
+    searchInput.oninput = (e) => renderResults(e.target.value);
+
+    // Initial load
+    const initialHash = location.hash.replace('#', '');
+    if (initialHash && document.getElementById('page-' + initialHash)) {
+      showPage(initialHash);
+    } else {
+      showPage('index');
+    }
+  </script>
+</body>
+</html>

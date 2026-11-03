@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commands &amp; Permissions - FindTheBlock Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <header>
+    <div class="header-left">
+      <a href="../index.html" class="brand">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Overview</a></li>
+          <li class="nav-item"><a href="../getting-started.html">Installation &amp; Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Architecture</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../architecture/world-factory.html">World Factory &amp; Nether</a></li>
+          <li class="nav-item"><a href="../architecture/lifecycle.html">Match Lifecycle</a></li>
+          <li class="nav-item"><a href="../architecture/reconnect-engine.html">Reconnect &amp; Mid-Game</a></li>
+          <li class="nav-item"><a href="../architecture/survival-buffs.html">Survival Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Configuration &amp; Setup</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../configuration/void-lobby.html">Void Lobby</a></li>
+          <li class="nav-item"><a href="../configuration/custom-lobby.html">Custom Lobby Setup</a></li>
+          <li class="nav-item"><a href="../configuration/difficulty-tiers.html">Difficulty Tiers</a></li>
+          <li class="nav-item"><a href="../configuration/config-reference.html">Config Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item active"><a href="commands.html">Commands &amp; Permissions</a></li>
+          <li class="nav-item"><a href="placeholderapi.html">PlaceholderAPI</a></li>
+          <li class="nav-item"><a href="troubleshooting.html">Troubleshooting &amp; FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <a href="../index.html">Docs</a>
+        <span>/</span>
+        <span>Reference</span>
+        <span>/</span>
+        <span>Commands &amp; Permissions</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Commands &amp; Permissions</h1>
+        <p class="lead-desc">Complete reference of in-game commands, arguments, and permission nodes.</p>
+      </div>
+
+      <p>All in-game commands for players, parties, and administrators.</p>
+
+      <h2 id="command-summary">Command List</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Permission</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>/party</code>, <code>/p</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Opens Party Management if in a party, or Party Finder if solo.</td>
+          </tr>
+          <tr>
+            <td><code>/party finder</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Opens the public Party Finder GUI to discover and join parties.</td>
+          </tr>
+          <tr>
+            <td><code>/party create [public|private]</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Creates a new party (public by default).</td>
+          </tr>
+          <tr>
+            <td><code>/party invite &lt;player&gt;</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Invites a player to join your party.</td>
+          </tr>
+          <tr>
+            <td><code>/party accept</code> / <code>/party deny</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Accepts or declines a pending party invitation.</td>
+          </tr>
+          <tr>
+            <td><code>/party leave</code> / <code>/party disband</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Leaves or disbands your current party.</td>
+          </tr>
+          <tr>
+            <td><code>/party start [tier]</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Starts the 20-second ready check for your party members.</td>
+          </tr>
+          <tr>
+            <td><code>/start [tier]</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Starts a 20-second party match ready-check (party leaders only).</td>
+          </tr>
+          <tr>
+            <td><code>/join</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Allows a player who connected mid-match to join as a late racer.</td>
+          </tr>
+          <tr>
+            <td><code>/spectate</code>, <code>/spec</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Enters an ongoing match as a spectator with flight and player tracker compass.</td>
+          </tr>
+          <tr>
+            <td><code>/leave</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Leaves your active match or party and returns you to the lobby.</td>
+          </tr>
+          <tr>
+            <td><code>/recipe</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Opens a GUI showing the recipe or acquisition guide for the active match target.</td>
+          </tr>
+          <tr>
+            <td><code>/menu</code>, <code>/selector</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Opens the Match Selector and Party Hub GUI (or right-click lobby compass).</td>
+          </tr>
+          <tr>
+            <td><code>/top</code></td>
+            <td><code>findtheblock.use</code></td>
+            <td>Opens an interactive GUI leaderboard showing top podium winners.</td>
+          </tr>
+          <tr>
+            <td><code>/ftb startall [tier]</code></td>
+            <td><code>findtheblock.admin</code></td>
+            <td>Starts a match for all players currently waiting in the lobby world.</td>
+          </tr>
+          <tr>
+            <td><code>/ftb stop</code> / <code>/ftb stopall</code></td>
+            <td><code>findtheblock.admin</code></td>
+            <td>Aborts all matches immediately, returns all players to the lobby, and purges match worlds.</td>
+          </tr>
+          <tr>
+            <td><code>/ftb leaderboard [spawn/remove]</code></td>
+            <td><code>findtheblock.admin</code></td>
+            <td>Spawns or removes in-world floating hologram leaderboards.</td>
+          </tr>
+          <tr>
+            <td><code>/ftb reload</code></td>
+            <td><code>findtheblock.admin</code></td>
+            <td>Reloads <code>config.yml</code> and updates in-world leaderboards.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="permissions-reference">Permissions Reference</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Permission Node</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>findtheblock.admin</code></td>
+            <td>Operators</td>
+            <td>Access to administrative commands (<code>/ftb start</code>, <code>/ftb stop</code>, <code>/ftb reload</code>).</td>
+          </tr>
+          <tr>
+            <td><code>findtheblock.use</code></td>
+            <td>All players (true)</td>
+            <td>Access to player commands (<code>/party</code>, <code>/join</code>, <code>/spectate</code>, <code>/recipe</code>, <code>/menu</code>, <code>/top</code>, <code>/leave</code>, <code>/start</code>).</td>
+          </tr>
+          <tr>
+            <td><code>findtheblock.bypass</code></td>
+            <td>Operators</td>
+            <td>Bypasses lobby block protection, allowing breaking and placing blocks in the lobby world.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="page-nav">
+        <a href="../configuration/config-reference.html" class="page-nav-link prev">
+          <span class="page-nav-sub">Previous</span>
+          <span class="page-nav-title">&larr; Config Reference</span>
+        </a>
+        <a href="placeholderapi.html" class="page-nav-link next">
+          <span class="page-nav-sub">Next</span>
+          <span class="page-nav-title">PlaceholderAPI &rarr;</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li class="toc-item active"><a href="#command-summary">Command List</a></li>
+        <li class="toc-item"><a href="#permissions-reference">Permissions Reference</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../search.js"></script>
+</body>
+</html>

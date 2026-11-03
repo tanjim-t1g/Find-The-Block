@@ -32,11 +32,7 @@ crash-reports/
 .DS_Store
 Thumbs.db
 
-# Documentation: ignore standalone HTML files and node/next build output, track Next.js docs
-docs/*.html
-docs/**/*.html
-docs/style.css
-docs/search.js
+# Documentation build caches
 docs/.next/
 docs/node_modules/
 docs/pnpm-lock.yaml

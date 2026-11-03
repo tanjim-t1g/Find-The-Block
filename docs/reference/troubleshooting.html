@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshooting &amp; FAQ - FindTheBlock Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <header>
+    <div class="header-left">
+      <a href="../index.html" class="brand">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Overview</a></li>
+          <li class="nav-item"><a href="../getting-started.html">Installation &amp; Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Architecture</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../architecture/world-factory.html">World Factory &amp; Nether</a></li>
+          <li class="nav-item"><a href="../architecture/lifecycle.html">Match Lifecycle</a></li>
+          <li class="nav-item"><a href="../architecture/reconnect-engine.html">Reconnect &amp; Mid-Game</a></li>
+          <li class="nav-item"><a href="../architecture/survival-buffs.html">Survival Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Configuration &amp; Setup</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../configuration/void-lobby.html">Void Lobby</a></li>
+          <li class="nav-item"><a href="../configuration/custom-lobby.html">Custom Lobby Setup</a></li>
+          <li class="nav-item"><a href="../configuration/difficulty-tiers.html">Difficulty Tiers</a></li>
+          <li class="nav-item"><a href="../configuration/config-reference.html">Config Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="commands.html">Commands &amp; Permissions</a></li>
+          <li class="nav-item"><a href="placeholderapi.html">PlaceholderAPI</a></li>
+          <li class="nav-item active"><a href="troubleshooting.html">Troubleshooting &amp; FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <a href="../index.html">Docs</a>
+        <span>/</span>
+        <span>Reference</span>
+        <span>/</span>
+        <span>Troubleshooting &amp; FAQ</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Troubleshooting &amp; FAQ</h1>
+        <p class="lead-desc">Answers to common questions and operational troubleshooting.</p>
+      </div>
+
+      <h2 id="nether-faq">Can players enter the Nether and End?</h2>
+      <p><strong>Yes, players can enter the Nether!</strong> Every match generates a linked pair: the match Overworld (<code>ftb_&lt;id&gt;</code>) and match Nether (<code>ftb_&lt;id&gt;_nether</code>). When players light and step into a Nether portal, <code>PortalListener.java</code> translates coordinates between the two worlds with 1:8 scaling.</p>
+      <p><strong>The End is disabled:</strong> Stronghold End portals do not generate an End dimension. Finding a Stronghold, gathering 12 Eyes of Ender, and fighting the Ender Dragon takes much longer than standard rush rounds, so matches remain focused on the Overworld and Nether.</p>
+
+      <h2 id="papi-raw-text">Why are placeholders displaying as raw text?</h2>
+      <p>If scoreboards or tablists display <code>%findtheblock_target%</code> instead of the actual item name:</p>
+      <ol>
+        <li>Verify that PlaceholderAPI is installed and enabled in your server's <code>plugins/</code> folder.</li>
+        <li>Check server startup logs to confirm FindTheBlock registered its expansion:
+          <pre><code>[FindTheBlock] Registered PlaceholderAPI expansion: %findtheblock_*%</code></pre>
+        </li>
+        <li>Run <code>/papi reload</code> in-game, followed by <code>/ftb reload</code>.</li>
+      </ol>
+
+      <h2 id="simultaneous-pickups">How are ties handled if two players get the block at the same time?</h2>
+      <p>Bukkit events process sequentially on the primary server thread. The first player acquisition event to execute acquires an atomic state lock on <code>GameManager#triggerWin()</code>. The game state instantly switches to <code>PODIUM</code>, which prevents any subsequent pickups from triggering secondary wins.</p>
+
+      <h2 id="resetting-stats">How do I reset leaderboards and player stats?</h2>
+      <p>Player career wins, games played, and records are stored in <code>plugins/FindTheBlock/stats.yml</code>. To reset the leaderboards completely:</p>
+      <ol>
+        <li>Stop the server (or run <code>/ftb stop</code> if a match is running).</li>
+        <li>Delete or edit <code>plugins/FindTheBlock/stats.yml</code>.</li>
+        <li>Restart your server or reload the plugin. A clean stats file will be created.</li>
+      </ol>
+
+      <div class="page-nav">
+        <a href="placeholderapi.html" class="page-nav-link prev">
+          <span class="page-nav-sub">Previous</span>
+          <span class="page-nav-title">&larr; PlaceholderAPI</span>
+        </a>
+        <a href="../index.html" class="page-nav-link next">
+          <span class="page-nav-sub">Home</span>
+          <span class="page-nav-title">Back to Overview &rarr;</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li class="toc-item active"><a href="#nether-faq">Nether &amp; End FAQ</a></li>
+        <li class="toc-item"><a href="#papi-raw-text">Placeholders Raw Text</a></li>
+        <li class="toc-item"><a href="#simultaneous-pickups">Simultaneous Pickups</a></li>
+        <li class="toc-item"><a href="#resetting-stats">Resetting Stats</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../search.js"></script>
+</body>
+</html>

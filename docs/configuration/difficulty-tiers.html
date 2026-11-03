@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difficulty Tiers - FindTheBlock Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <header>
+    <div class="header-left">
+      <a href="../index.html" class="brand">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Overview</a></li>
+          <li class="nav-item"><a href="../getting-started.html">Installation &amp; Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Architecture</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../architecture/world-factory.html">World Factory &amp; Nether</a></li>
+          <li class="nav-item"><a href="../architecture/lifecycle.html">Match Lifecycle</a></li>
+          <li class="nav-item"><a href="../architecture/reconnect-engine.html">Reconnect &amp; Mid-Game</a></li>
+          <li class="nav-item"><a href="../architecture/survival-buffs.html">Survival Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Configuration &amp; Setup</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="void-lobby.html">Void Lobby</a></li>
+          <li class="nav-item"><a href="custom-lobby.html">Custom Lobby Setup</a></li>
+          <li class="nav-item active"><a href="difficulty-tiers.html">Difficulty Tiers</a></li>
+          <li class="nav-item"><a href="config-reference.html">Config Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../reference/commands.html">Commands &amp; Permissions</a></li>
+          <li class="nav-item"><a href="../reference/placeholderapi.html">PlaceholderAPI</a></li>
+          <li class="nav-item"><a href="../reference/troubleshooting.html">Troubleshooting &amp; FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <a href="../index.html">Docs</a>
+        <span>/</span>
+        <span>Configuration</span>
+        <span>/</span>
+        <span>Difficulty Tiers</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Difficulty Tiers</h1>
+        <p class="lead-desc">Configure item pools, control round duration, and help players with the in-game recipe guide.</p>
+      </div>
+
+      <p>FindTheBlock includes three built-in difficulty tiers: <code>EASY</code>, <code>NORMAL</code>, and <code>HARD</code>. Each tier defines a pool of items that the roulette selector picks from at the beginning of each round.</p>
+
+      <h2 id="tier-overview">Tier Overview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Sample Items</th>
+            <th>Focus &amp; Style</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>EASY</code> (1 pt)</td>
+            <td>Diamond Ore, Emerald Ore, Amethyst Block, Dripstone, Slime Block, Sponge, Dead Corals</td>
+            <td>Mining &amp; straightforward exploration</td>
+          </tr>
+          <tr>
+            <td><code>NORMAL</code> (3 pts)</td>
+            <td>Ancient Debris, Crying Obsidian, Sea Lantern, Prismarine, Nylium, Resin Blocks, Sculk Sensors</td>
+            <td>Biome travel, Silk Touch, Nether exploration</td>
+          </tr>
+          <tr>
+            <td><code>HARD</code> (5 pts)</td>
+            <td>Mob Heads, Heavy Core, Shulker Boxes, Netherite Block, Beacon, Ender Chest, Lodestone</td>
+            <td>Rare loot, boss encounters, heavy resources</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="starting-with-tiers">Starting a Match with a Specific Tier</h2>
+      <p>Pass the tier as an argument, or choose it visually in the in-game Mode Selection GUI:</p>
+
+      <div class="pre-header">
+        <span>In-Game Chat</span>
+        <button class="copy-btn" onclick="copyText('/start easy')">Copy</button>
+      </div>
+      <pre><code>/start easy
+/start normal
+/start hard
+
+# Start for all lobby players (Admin only)
+/ftb startall easy
+/ftb startall normal
+/ftb startall hard</code></pre>
+      <p>If no tier is specified, the plugin uses the <code>default-tier</code> setting from <code>config.yml</code>.</p>
+
+      <h2 id="customizing-pools">Customizing Item Pools</h2>
+      <p>You can add any vanilla block to the lists under <code>targets</code> in <code>config.yml</code> using standard Bukkit Material names:</p>
+
+      <div class="pre-header">
+        <span>config.yml</span>
+        <button class="copy-btn" onclick="copyText('targets:\n  default-tier: &quot;NORMAL&quot;\n  EASY:\n    - &quot;DIAMOND_ORE&quot;\n    - &quot;EMERALD_ORE&quot;\n    - &quot;AMETHYST_BLOCK&quot;\n  NORMAL:\n    - &quot;ANCIENT_DEBRIS&quot;\n    - &quot;CRYING_OBSIDIAN&quot;\n    - &quot;RESIN_BLOCK&quot;\n  HARD:\n    - &quot;DRAGON_HEAD&quot;\n    - &quot;HEAVY_CORE&quot;\n    - &quot;SHULKER_BOX&quot;')">Copy</button>
+      </div>
+      <pre><code>targets:
+  default-tier: "NORMAL"
+  EASY:
+    - "DIAMOND_ORE"
+    - "EMERALD_ORE"
+    - "AMETHYST_BLOCK"
+    # ... See BLOCK_LIST.txt for complete listings
+  NORMAL:
+    - "ANCIENT_DEBRIS"
+    - "CRYING_OBSIDIAN"
+    - "RESIN_BLOCK"
+    # ... See BLOCK_LIST.txt for complete listings
+  HARD:
+    - "DRAGON_HEAD"
+    - "HEAVY_CORE"
+    - "SHULKER_BOX"
+    # ... See BLOCK_LIST.txt for complete listings</code></pre>
+
+      <h2 id="recipe-guide">In-Game Recipe Guide (<code>/recipe</code>)</h2>
+      <p>Not every player remembers complex vanilla crafting recipes (such as dispensers, daylight sensors, or pistons). During an active match, any participant can execute:</p>
+
+      <div class="pre-header">
+        <span>In-Game Chat</span>
+        <button class="copy-btn" onclick="copyText('/recipe')">Copy</button>
+      </div>
+      <pre><code>/recipe</code></pre>
+
+      <p>This opens a 9-slot crafting matrix GUI showing the exact layout of ingredients required to assemble the active target block, along with smelting instructions if the item requires a furnace.</p>
+
+      <div class="page-nav">
+        <a href="custom-lobby.html" class="page-nav-link prev">
+          <span class="page-nav-sub">Previous</span>
+          <span class="page-nav-title">&larr; Custom Lobby Setup</span>
+        </a>
+        <a href="config-reference.html" class="page-nav-link next">
+          <span class="page-nav-sub">Next</span>
+          <span class="page-nav-title">Config Reference &rarr;</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li class="toc-item active"><a href="#tier-overview">Tier Overview</a></li>
+        <li class="toc-item"><a href="#starting-with-tiers">Starting with a Specific Tier</a></li>
+        <li class="toc-item"><a href="#customizing-pools">Customizing Item Pools</a></li>
+        <li class="toc-item"><a href="#recipe-guide">Recipe Guide (/recipe)</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../search.js"></script>
+</body>
+</html>

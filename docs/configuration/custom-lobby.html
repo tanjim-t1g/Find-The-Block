@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Lobby Setup - FindTheBlock Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-root="../">
+
+  <header>
+    <div class="header-left">
+      <a href="../index.html" class="brand">FindTheBlock</a>
+      <span class="badge">v1.0.0</span>
+    </div>
+    <div class="header-right">
+      <button class="search-btn" id="openSearch">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search docs...</span>
+        <span class="kbd">Ctrl K</span>
+      </button>
+      <a href="https://github.com/tanjim-t1g/Find-The-Block" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <div class="layout-container">
+    
+    <aside class="sidebar">
+      <div class="nav-group">
+        <div class="nav-group-title">Getting Started</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../index.html">Overview</a></li>
+          <li class="nav-item"><a href="../getting-started.html">Installation &amp; Setup</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Core Architecture</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../architecture/world-factory.html">World Factory &amp; Nether</a></li>
+          <li class="nav-item"><a href="../architecture/lifecycle.html">Match Lifecycle</a></li>
+          <li class="nav-item"><a href="../architecture/reconnect-engine.html">Reconnect &amp; Mid-Game</a></li>
+          <li class="nav-item"><a href="../architecture/survival-buffs.html">Survival Buffs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Configuration &amp; Setup</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="void-lobby.html">Void Lobby</a></li>
+          <li class="nav-item active"><a href="custom-lobby.html">Custom Lobby Setup</a></li>
+          <li class="nav-item"><a href="difficulty-tiers.html">Difficulty Tiers</a></li>
+          <li class="nav-item"><a href="config-reference.html">Config Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Reference</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="../reference/commands.html">Commands &amp; Permissions</a></li>
+          <li class="nav-item"><a href="../reference/placeholderapi.html">PlaceholderAPI</a></li>
+          <li class="nav-item"><a href="../reference/troubleshooting.html">Troubleshooting &amp; FAQ</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="breadcrumb">
+        <a href="../index.html">Docs</a>
+        <span>/</span>
+        <span>Configuration</span>
+        <span>/</span>
+        <span>Custom Lobby Setup</span>
+      </div>
+
+      <div class="page-header">
+        <h1>Custom Lobby Setup</h1>
+        <p class="lead-desc">How to connect FindTheBlock to an existing hub, spawn, or custom lobby build.</p>
+      </div>
+
+      <p>If you already have a custom-built spawn castle, waiting arena, or manage worlds using Multiverse-Core, you do not have to use the default bedrock void platform. You can easily point FindTheBlock to any world and spawn location on your server.</p>
+
+      <h2 id="step-by-step">How to Change the Lobby World</h2>
+      <ol>
+        <li>Open <code>plugins/FindTheBlock/config.yml</code> in your text editor.</li>
+        <li>Find the <code>lobby</code> section near the middle of the file.</li>
+        <li>Set <code>use-custom-world: true</code>. This tells the plugin not to create its internal void world.</li>
+        <li>Set <code>world-name</code> to your target world folder name (e.g. <code>"hub"</code>, <code>"spawn"</code>, or <code>"world"</code>).</li>
+        <li>Configure the exact coordinates where players should spawn when they join or finish a match:
+          <div class="pre-header">
+            <span>config.yml</span>
+            <button class="copy-btn" onclick="copyText('lobby:\n  use-custom-world: true\n  world-name: &quot;hub&quot;\n  spawn-point:\n    x: 100.5\n    y: 72.0\n    z: -250.5\n    yaw: 180.0\n    pitch: 0.0\n  enforce-lobby-protections: true')">Copy</button>
+          </div>
+          <pre><code>lobby:
+  use-custom-world: true    # Enable custom world binding
+  world-name: "hub"         # Name of your world folder
+  spawn-point:
+    x: 100.5
+    y: 72.0
+    z: -250.5
+    yaw: 180.0
+    pitch: 0.0
+  enforce-lobby-protections: true   # Keep PVP/hunger disabled in this lobby</code></pre>
+        </li>
+        <li>Save the file and run <code>/ftb reload</code> in-game or from your server console.</li>
+      </ol>
+
+      <h2 id="multiverse-compatibility">Multiverse &amp; Multi-World Managers</h2>
+      <p>If your server uses Multiverse-Core or HyperVerse:</p>
+      <ul>
+        <li>Ensure your lobby world is loaded by Multiverse before players join.</li>
+        <li>If you use WorldGuard regions in your custom hub, you can set <code>enforce-lobby-protections: false</code> in <code>config.yml</code> so that your existing WorldGuard flags control building and PVP permissions instead of FindTheBlock.</li>
+      </ul>
+
+      <div class="page-nav">
+        <a href="void-lobby.html" class="page-nav-link prev">
+          <span class="page-nav-sub">Previous</span>
+          <span class="page-nav-title">&larr; Void Lobby</span>
+        </a>
+        <a href="difficulty-tiers.html" class="page-nav-link next">
+          <span class="page-nav-sub">Next</span>
+          <span class="page-nav-title">Difficulty Tiers &rarr;</span>
+        </a>
+      </div>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">On this page</div>
+      <ul class="toc-list">
+        <li class="toc-item active"><a href="#step-by-step">How to Change the Lobby World</a></li>
+        <li class="toc-item"><a href="#multiverse-compatibility">Multiverse Compatibility</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <div class="search-modal" id="searchModal">
+    <div class="search-card">
+      <div class="search-input-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchInput" placeholder="Search documentation..." autocomplete="off">
+        <span class="kbd">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../search.js"></script>
+</body>
+</html>
