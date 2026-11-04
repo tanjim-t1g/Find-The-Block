@@ -137,9 +137,7 @@ public class ProtectionListener implements Listener {
     public void onMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (isLobby(player.getWorld())) {
-            double thresholdY = config.isVoidTeleportAuto()
-                    ? (player.getWorld().getMinHeight() - 62.0)
-                    : config.getVoidTeleportY();
+            double thresholdY = player.getWorld().getMinHeight() - 62.0;
             if (player.getLocation().getY() < thresholdY) {
                 player.setFallDistance(0.0f);
                 player.teleport(player.getWorld().getSpawnLocation());

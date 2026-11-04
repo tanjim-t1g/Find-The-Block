@@ -26,10 +26,7 @@ lobby:
   disable-weather: true
   daylight-fixed: true
   # If a player slips off the platform, teleport them back to spawn at this Y level
-  # If a player falls into the void, teleport them back to spawn.
-  # Set to "auto" to automatically teleport 2 blocks above the void damage threshold (world min height - 62),
-  # or specify an exact Y level (e.g. -60.0).
-  void-teleport-y: "auto"
+
 
 # =====================================================================
 #                 Background World Factory Pipeline
