@@ -465,7 +465,6 @@ public class GameManager {
         underpopulatedSeconds = 0;
 
         this.state = GameState.LOBBY;
-        Chat.broadcast("<gold>[FTB]</gold> <green>Ready for next match.</green>");
     }
 
     public void forceStop(CommandSender sender) {

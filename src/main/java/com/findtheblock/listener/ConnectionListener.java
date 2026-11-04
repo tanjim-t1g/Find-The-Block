@@ -73,7 +73,6 @@ public class ConnectionListener implements Listener {
         // Save session if in an active match
         if (gameManager.getState() == GameState.IN_GAME && gameManager.getContestants().contains(player.getUniqueId())) {
             gameManager.getReconnectTracker().save(player);
-            Chat.broadcast("<gray>" + player.getName() + " disconnected (60s to reconnect).</gray>");
         }
 
         // If party leader disconnects, disband party and unlist from party finder
