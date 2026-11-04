@@ -4,7 +4,6 @@ import com.findtheblock.FindTheBlock;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,8 +19,8 @@ public class UpdateChecker {
     private final FindTheBlock plugin;
     private boolean updateAvailable = false;
     private String latestVersion = "";
-    private String downloadUrl = "https://modrinth.com/project/findtheblock";
-    private String githubUrl = "https://github.com/tanjim-t1g/Find-The-Block/releases/latest";
+    private final String downloadUrl = "https://modrinth.com/findtheblock";
+    private final String githubUrl = "https://github.com/tanjim-t1g/Find-The-Block/releases/latest";
     private String minMinecraft = "1.21.0";
 
     public UpdateChecker(FindTheBlock plugin) {
@@ -78,10 +77,10 @@ public class UpdateChecker {
 
     private boolean isServerCompatible(String minMC) {
         try {
-            String serverVersion = Bukkit.getMinecraftVersion(); // e.g. "1.21.1" or "1.21"
+            String serverVersion = Bukkit.getMinecraftVersion();
             return compareVersions(serverVersion, minMC) >= 0;
         } catch (Exception e) {
-            return true; // default allow if parsing fails
+            return true;
         }
     }
 
@@ -129,7 +128,14 @@ public class UpdateChecker {
         plugin.getLogger().info("==================================================");
         plugin.getLogger().info("  FindTheBlock v" + latest + " is available!");
         plugin.getLogger().info("  You are currently running v" + current);
-        plugin.getLogger().info("  Download: " + downloadUrl);
+        plugin.getLogger().info("");
+        plugin.getLogger().info("  [+============================================+]");
+        plugin.getLogger().info("  |              FIND THE BLOCK                  |");
+        plugin.getLogger().info("  |         New Version Available Now!           |");
+        plugin.getLogger().info("  [+============================================+]");
+        plugin.getLogger().info("");
+        plugin.getLogger().info("  Modrinth: " + downloadUrl);
+        plugin.getLogger().info("  GitHub:   " + githubUrl);
         plugin.getLogger().info("==================================================");
     }
 
