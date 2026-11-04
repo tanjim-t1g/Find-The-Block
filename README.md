@@ -31,14 +31,15 @@ Any Fork of paper that uses Paper's API
 
 ## Features
 
-- **Fresh worlds every match** -- each game generates a new survival world with full Overworld and Nether access
-- **Party system** -- group up with friends before starting a match
-- **Leaderboard** -- track top players across matches
-- **Starter kit** -- iron tools and a silk touch pickaxe to get going
-- **20-minute buffs** -- survival buffs kick in after 20 minutes to keep things moving
-- **PlaceholderAPI support** -- plug stats into scoreboards and other plugins
+- **Fresh worlds every match** -- each game generates a new survival world.
+- **Party system** -- group up with friends before starting a match.
+- **Leaderboard** -- track top players across matches.
+- **Starter kit** -- iron tools and a silk touch pickaxe to get going.
+- **20-minute buffs** -- survival buffs kick in after 20 minutes to keep things moving.
+- **PlaceholderAPI support** -- plug stats into scoreboards and other plugins.
 - **Game-Selectpor Compass** -- players are provided a compass to select gamemode. 
 
+Please refer to documentation for more details. <a href="https://tanjim-t1g.github.io/Find-The-Block/">Documentation</a>
 ## Commands
 
 <details>
