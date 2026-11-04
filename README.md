@@ -23,7 +23,6 @@
   <tr align="center" valign="top">
     <td><sub><b>Paper</b></sub></td>
     <td><sub><b>Purpur</b></sub></td>
-    <td><sub><b>Spigot</b></sub></td>
   </tr>
 </table>
 
