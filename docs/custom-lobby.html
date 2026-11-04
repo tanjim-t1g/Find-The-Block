@@ -159,36 +159,44 @@
       </div>
     </aside>
 
-    <main class="content">
+        <main class="content">
       <div class="breadcrumb">Docs / Setup &amp; Config / Change Lobby World</div>
 
       <h1>Change Lobby World</h1>
-      <p class="lead-desc">How to use your own custom spawn or hub build instead of the void platform.</p>
+      <p class="lead-desc">How to use your own custom spawn, hub build, or multi-world lobby instead of the auto-generated void platform.</p>
 
       <h2>Configuration</h2>
-      <p>Open <code>plugins/FindTheBlock/config.yml</code> and edit the <code>lobby</code> section:</p>
+      <p>Open <code>plugins/FindTheBlock/config.yml</code> and set your world name and disable the platform under the <code>lobby</code> section:</p>
 
       <div class="pre-header">
         <span>config.yml</span>
-        <button class="copy-btn" onclick="copyText('lobby:\n  custom-world: &quot;hub&quot;\n  spawn-x: 0.5\n  spawn-y: 65.0\n  spawn-z: 0.5\n  yaw: 0.0\n  pitch: 0.0')">Copy</button>
+        <button class="copy-btn" onclick="copyText('lobby:\n  world-name: &quot;hub&quot;\n  platform:\n    auto-generate: false\n  void-teleport: true\n  void-teleport-blocks-above-damage: 2.0')">Copy</button>
       </div>
       <pre><code>lobby:
-  custom-world: "hub"   # Your hub or spawn world folder name
-  spawn-x: 0.5
-  spawn-y: 65.0
-  spawn-z: 0.5
-  yaw: 0.0
-  pitch: 0.0</code></pre>
+  world-name: "hub"        # Exact name of your custom world folder
+  platform:
+    auto-generate: false   # Disable the auto-generated bedrock platform
 
-      <h2>Steps</h2>
+  # Automatic void protection
+  void-teleport: true
+  void-teleport-blocks-above-damage: 2.0</code></pre>
+
+      <h2>Setup Steps</h2>
       <ol>
-        <li>Make sure your hub world is placed in your server directory and loaded.</li>
-        <li>Set <code>custom-world</code> to the exact name of your world.</li>
-        <li>Set the spawn coordinates.</li>
-        <li>Run <code>/ftb reload</code> or restart the server.</li>
+        <li>Make sure your custom world folder is placed in your server directory and loaded.</li>
+        <li>Open <code>config.yml</code> and set <code>lobby.world-name</code> to your world's exact name.</li>
+        <li>Set <code>lobby.platform.auto-generate: false</code> so the 100x100 bedrock box is not built inside your world.</li>
+        <li>Join the server, go to your custom lobby world, stand where you want players to spawn, and run <code>/setworldspawn</code>.</li>
+        <li>Restart the server.</li>
       </ol>
 
-      <p>If <code>custom-world</code> is left empty (<code>""</code>), the plugin uses the default void platform (<code>ftb_lobby</code>).</p>
+      <h2>Automatic Lobby Features</h2>
+      <p>When using a custom lobby world, FindTheBlock automatically manages the following protections:</p>
+      <ul>
+        <li><strong>World Spawn Integration:</strong> Players joining the lobby or returning from matches spawn at the world spawn point set by <code>/setworldspawn</code>.</li>
+        <li><strong>Keep Inventory:</strong> <code>keepInventory</code> is automatically enforced on the lobby world. If a player dies, their items and XP are preserved with zero ground drops.</li>
+        <li><strong>Void Fall Protection:</strong> If players slip off your lobby build into the void, they are caught 2 blocks before void damage starts and teleported back to the world spawn with fall distance reset to zero.</li>
+      </ul>
 
       <div class="page-nav">
         <a href="void-lobby.html" class="page-nav-link prev">
