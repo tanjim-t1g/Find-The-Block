@@ -25,6 +25,7 @@ import com.findtheblock.listener.ProtectionListener;
 import com.findtheblock.lobby.LobbyManager;
 import com.findtheblock.party.PartyManager;
 import com.findtheblock.stats.StatsManager;
+import com.findtheblock.util.UpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
@@ -46,6 +47,7 @@ public class FindTheBlock extends JavaPlugin {
     private ReconnectTracker reconnectTracker;
     private GameManager gameManager;
     private LeaderboardManager leaderboardManager;
+    private UpdateChecker updateChecker;
 
     @Override
     public void onEnable() {
@@ -65,11 +67,14 @@ public class FindTheBlock extends JavaPlugin {
         this.gameManager = new GameManager(this, configManager, worldFactory, lobbyManager,
                 targetEngine, partyManager, statsManager, spectatorManager, reconnectTracker);
 
+        this.updateChecker = new UpdateChecker(this);
+        this.updateChecker.checkForUpdates();
+
         // 3. Register Event Listeners
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new AcquisitionListener(gameManager, targetEngine), this);
         pm.registerEvents(new ProtectionListener(this, gameManager, lobbyManager, configManager, partyManager), this);
-        pm.registerEvents(new ConnectionListener(gameManager, lobbyManager, configManager, partyManager), this);
+        pm.registerEvents(new ConnectionListener(gameManager, lobbyManager, configManager, partyManager, updateChecker), this);
         pm.registerEvents(new PortalListener(gameManager), this);
         pm.registerEvents(new ChatListener(gameManager, lobbyManager), this);
 
@@ -159,4 +164,5 @@ public class FindTheBlock extends JavaPlugin {
     public ReconnectTracker getReconnectTracker() { return reconnectTracker; }
     public LeaderboardManager getLeaderboardManager() { return leaderboardManager; }
     public GameManager getGameManager() { return gameManager; }
+    public UpdateChecker getUpdateChecker() { return updateChecker; }
 }

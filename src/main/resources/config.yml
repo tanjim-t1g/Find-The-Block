@@ -151,3 +151,10 @@ targets:
     - "CHORUS_FLOWER"
     - "END_STONE_BRICKS"
     - "MYCELIUM"
+
+# =====================================================================
+#                        Update Checker
+# =====================================================================
+update-checker:
+  enabled: true
+  notify-ops: true

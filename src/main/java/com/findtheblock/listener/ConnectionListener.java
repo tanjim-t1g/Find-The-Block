@@ -6,6 +6,7 @@ import com.findtheblock.game.GameState;
 import com.findtheblock.lobby.LobbyManager;
 import com.findtheblock.party.PartyManager;
 import com.findtheblock.util.Chat;
+import com.findtheblock.util.UpdateChecker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,13 +23,15 @@ public class ConnectionListener implements Listener {
     private final LobbyManager lobbyManager;
     private final ConfigManager config;
     private final PartyManager partyManager;
+    private final UpdateChecker updateChecker;
 
     public ConnectionListener(GameManager gameManager, LobbyManager lobbyManager,
-                              ConfigManager config, PartyManager partyManager) {
+                              ConfigManager config, PartyManager partyManager, UpdateChecker updateChecker) {
         this.gameManager = gameManager;
         this.lobbyManager = lobbyManager;
         this.config = config;
         this.partyManager = partyManager;
+        this.updateChecker = updateChecker;
     }
 
     @EventHandler
@@ -58,6 +61,10 @@ public class ConnectionListener implements Listener {
         } else {
             // Normal lobby join
             lobbyManager.teleportToLobby(player);
+        }
+
+        if ((player.isOp() || player.hasPermission("findtheblock.admin")) && updateChecker.isUpdateAvailable() && config.isUpdateNotifyOps()) {
+            updateChecker.sendOpNotification(player);
         }
     }
 

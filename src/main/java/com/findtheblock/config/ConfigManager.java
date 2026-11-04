@@ -42,6 +42,8 @@ public class ConfigManager {
     private int previewSeconds;
     private int leaderInactivityMinutes;
     private DifficultyTier defaultTier;
+    private boolean updateCheckerEnabled;
+    private boolean updateNotifyOps;
 
     public ConfigManager(FindTheBlock plugin) {
         this.plugin = plugin;
@@ -88,6 +90,8 @@ public class ConfigManager {
         this.previewSeconds = config.getInt("match.roulette.preview-seconds", 4);
         this.leaderInactivityMinutes = config.getInt("match.party.leader-inactivity-minutes", 10);
         this.defaultTier = DifficultyTier.fromString(config.getString("targets.default-tier", "NORMAL"));
+        this.updateCheckerEnabled = config.getBoolean("update-checker.enabled", true);
+        this.updateNotifyOps = config.getBoolean("update-checker.notify-ops", true);
 
         // Load item pools
         targetPools.clear();
@@ -143,4 +147,6 @@ public class ConfigManager {
     public int getPreviewSeconds() { return previewSeconds; }
     public int getLeaderInactivityMinutes() { return leaderInactivityMinutes; }
     public DifficultyTier getDefaultTier() { return defaultTier; }
+    public boolean isUpdateCheckerEnabled() { return updateCheckerEnabled; }
+    public boolean isUpdateNotifyOps() { return updateNotifyOps; }
 }
