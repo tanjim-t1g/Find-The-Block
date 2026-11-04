@@ -25,6 +25,7 @@ import com.findtheblock.listener.ProtectionListener;
 import com.findtheblock.lobby.LobbyManager;
 import com.findtheblock.party.PartyManager;
 import com.findtheblock.stats.StatsManager;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -129,6 +130,10 @@ public class FindTheBlock extends JavaPlugin {
             new FTBPlaceholderHook(this, gameManager, statsManager).register();
             getLogger().info("Registered PlaceholderAPI expansion for FindTheBlock!");
         }
+
+        // bStats Metrics
+        int pluginId = 35123;
+        new Metrics(this, pluginId);
 
         getLogger().info("FindTheBlock 1.0.0 enabled successfully! Dedicated void lobby initialized.");
     }
