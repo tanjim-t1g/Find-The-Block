@@ -137,10 +137,13 @@ public class ProtectionListener implements Listener {
     public void onMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (isLobby(player.getWorld())) {
-            double thresholdY = player.getWorld().getMinHeight() - 62.0;
-            if (player.getLocation().getY() < thresholdY) {
-                player.setFallDistance(0.0f);
-                player.teleport(player.getWorld().getSpawnLocation());
+            if (config.isVoidTeleportEnabled()) {
+                double damageY = player.getWorld().getMinHeight() - 64.0;
+                double thresholdY = damageY + config.getVoidTeleportBlocksAboveDamage();
+                if (player.getLocation().getY() < thresholdY) {
+                    player.setFallDistance(0.0f);
+                    player.teleport(player.getWorld().getSpawnLocation());
+                }
             }
         } else if (gameManager.getSpectatorManager().isSpectator(player.getUniqueId())) {
             // Guard against spectator falling below void boundary in match worlds

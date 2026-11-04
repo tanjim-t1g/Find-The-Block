@@ -19,6 +19,8 @@ public class ConfigManager {
     private int platformSize;
     private int platformY;
     private Material platformMaterial;
+    private boolean voidTeleportEnabled = true;
+    private double voidTeleportBlocksAboveDamage = 2.0;
 
     private int bufferSize;
     private int chunkRadius;
@@ -60,6 +62,8 @@ public class ConfigManager {
         this.platformSize = config.getInt("lobby.platform.size", 100);
         this.platformY = config.getInt("lobby.platform.y-level", 100);
         String matStr = config.getString("lobby.platform.material", "BEDROCK");
+        this.voidTeleportEnabled = config.getBoolean("lobby.void-teleport", true);
+        this.voidTeleportBlocksAboveDamage = config.getDouble("lobby.void-teleport-blocks-above-damage", 2.0);
         Material pMat = Material.matchMaterial(matStr);
         this.platformMaterial = (pMat != null && pMat.isBlock()) ? pMat : Material.BEDROCK;
 
@@ -123,6 +127,8 @@ public class ConfigManager {
     public int getPlatformSize() { return platformSize; }
     public int getPlatformY() { return platformY; }
     public Material getPlatformMaterial() { return platformMaterial; }
+    public boolean isVoidTeleportEnabled() { return voidTeleportEnabled; }
+    public double getVoidTeleportBlocksAboveDamage() { return voidTeleportBlocksAboveDamage; }
 
     public int getBufferSize() { return bufferSize; }
     public int getChunkRadius() { return chunkRadius; }

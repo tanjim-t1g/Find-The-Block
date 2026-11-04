@@ -25,6 +25,10 @@ lobby:
   disable-item-drops: true
   disable-weather: true
   daylight-fixed: true
+  # Teleport players back to world spawn before taking void damage
+  void-teleport: true
+  # Blocks above the void damage boundary (minHeight - 64) where teleport triggers
+  void-teleport-blocks-above-damage: 2.0
   # If a player slips off the platform, teleport them back to spawn at this Y level
 
 
