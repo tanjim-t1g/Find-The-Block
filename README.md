@@ -19,7 +19,6 @@
   <tr align="center">
     <td><img src="assets/paper_logo.png" alt="Paper" height="60" /></td>
     <td><img src="assets/purpur_logo.png" alt="Purpur" height="60" /></td>
-    <td><img src="assets/spigot_logo.png" alt="Spigot" height="60" /></td>
   </tr>
   <tr align="center" valign="top">
     <td><sub><b>Paper</b></sub></td>
