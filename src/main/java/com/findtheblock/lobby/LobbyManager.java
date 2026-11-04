@@ -51,6 +51,7 @@ public class LobbyManager {
         lobbyWorld.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
         lobbyWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
         lobbyWorld.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+        lobbyWorld.setGameRule(GameRule.KEEP_INVENTORY, true);
         lobbyWorld.setTime(6000L); // Fixed noon
         lobbyWorld.setStorm(false);
         lobbyWorld.setThundering(false);
@@ -58,10 +59,11 @@ public class LobbyManager {
         // Build 100x100 Bedrock Platform at Y = 100 if requested
         if (config.isAutoGeneratePlatform()) {
             buildBedrockPlatform();
+            this.spawnLocation = new Location(lobbyWorld, 0.5, config.getPlatformY() + 1.0, 0.5, 0.0f, 0.0f);
+            lobbyWorld.setSpawnLocation(spawnLocation);
+        } else {
+            this.spawnLocation = lobbyWorld.getSpawnLocation();
         }
-
-        this.spawnLocation = new Location(lobbyWorld, 0.5, config.getPlatformY() + 1.0, 0.5, 0.0f, 0.0f);
-        lobbyWorld.setSpawnLocation(spawnLocation);
     }
 
     /**
@@ -137,6 +139,6 @@ public class LobbyManager {
     }
 
     public Location getSpawnLocation() {
-        return spawnLocation;
+        return spawnLocation != null ? spawnLocation : lobbyWorld.getSpawnLocation();
     }
 }

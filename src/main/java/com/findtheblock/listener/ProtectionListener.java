@@ -124,6 +124,16 @@ public class ProtectionListener implements Listener {
     }
 
     @EventHandler
+    public void onDeath(org.bukkit.event.entity.PlayerDeathEvent event) {
+        if (isLobby(event.getEntity().getWorld())) {
+            event.setKeepInventory(true);
+            event.setKeepLevel(true);
+            event.getDrops().clear();
+            event.setDroppedExp(0);
+        }
+    }
+
+    @EventHandler
     public void onMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         if (isLobby(player.getWorld())) {
@@ -131,7 +141,8 @@ public class ProtectionListener implements Listener {
                     ? (player.getWorld().getMinHeight() - 62.0)
                     : config.getVoidTeleportY();
             if (player.getLocation().getY() < thresholdY) {
-                lobbyManager.teleportToLobby(player);
+                player.setFallDistance(0.0f);
+                player.teleport(player.getWorld().getSpawnLocation());
             }
         } else if (gameManager.getSpectatorManager().isSpectator(player.getUniqueId())) {
             // Guard against spectator falling below void boundary in match worlds
