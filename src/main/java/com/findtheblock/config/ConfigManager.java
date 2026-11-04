@@ -20,6 +20,7 @@ public class ConfigManager {
     private int platformY;
     private Material platformMaterial;
     private double voidTeleportY;
+    private boolean voidTeleportAuto = true;
 
     private int bufferSize;
     private int chunkRadius;
@@ -63,7 +64,18 @@ public class ConfigManager {
         String matStr = config.getString("lobby.platform.material", "BEDROCK");
         Material pMat = Material.matchMaterial(matStr);
         this.platformMaterial = (pMat != null && pMat.isBlock()) ? pMat : Material.BEDROCK;
-        this.voidTeleportY = config.getDouble("lobby.void-teleport-y", 90.0);
+        String voidVal = config.getString("lobby.void-teleport-y", "auto");
+        if ("auto".equalsIgnoreCase(voidVal)) {
+            this.voidTeleportAuto = true;
+            this.voidTeleportY = -126.0;
+        } else {
+            this.voidTeleportAuto = false;
+            try {
+                this.voidTeleportY = Double.parseDouble(voidVal);
+            } catch (NumberFormatException e) {
+                this.voidTeleportY = -126.0;
+            }
+        }
 
         // World Factory settings
         this.bufferSize = Math.max(1, config.getInt("world-factory.buffer-size", 1));
@@ -125,6 +137,7 @@ public class ConfigManager {
     public int getPlatformY() { return platformY; }
     public Material getPlatformMaterial() { return platformMaterial; }
     public double getVoidTeleportY() { return voidTeleportY; }
+    public boolean isVoidTeleportAuto() { return voidTeleportAuto; }
 
     public int getBufferSize() { return bufferSize; }
     public int getChunkRadius() { return chunkRadius; }
